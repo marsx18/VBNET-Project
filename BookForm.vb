@@ -1,4 +1,5 @@
 ﻿Imports System.Data.SqlClient
+Imports System.IO
 Imports Microsoft.Data.SqlClient
 
 Public Class BookForm
@@ -6,7 +7,8 @@ Public Class BookForm
     '--------------------------------------------
     ' DATABASE CONNECTION
     '--------------------------------------------
-    Dim con As New SqlConnection("Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Database\Library.mdf;Integrated Security=True;Connect Timeout=30")
+    Dim databasePath As String = Path.Combine(Application.StartupPath, "..\..\..\Database\Library.mdf")
+    Dim con As New SqlConnection("Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Projects\VBNET-Project\Database\Library.mdf;Integrated Security=True;Connect Timeout=30")
 
     '--------------------------------------------
     ' LOAD DATA WHEN FORM OPENS
