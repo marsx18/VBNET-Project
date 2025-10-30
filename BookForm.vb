@@ -170,7 +170,7 @@ Public Class BookForm
 
 
     '--------------------------------------------
-    ' CLEAR INPUT FIELDS
+    ' CLEAR INPUT FIELDS h
     '--------------------------------------------
     Private Sub btnClear_Click(sender As Object, e As EventArgs) Handles btnClear.Click
         ClearFields()
