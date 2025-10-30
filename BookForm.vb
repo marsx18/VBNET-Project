@@ -8,12 +8,15 @@ Public Class BookForm
     ' DATABASE CONNECTION
     '--------------------------------------------
     Dim databasePath As String = Path.Combine(Application.StartupPath, "..\..\..\Database\Library.mdf")
-    Dim con As New SqlConnection("Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Databases\Library.mdf;Integrated Security=True;Connect Timeout=30")
+    Dim con As New SqlConnection("Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Projects\marsx18\VBNET-Project\Database\Library.mdf;Integrated Security=True;Connect Timeout=30")
 
     '--------------------------------------------
     ' LOAD DATA WHEN FORM OPENS
     '--------------------------------------------
     Private Sub BookForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        cboStatus.Items.Clear()
+        cboStatus.Items.AddRange(New String() {"Available", "Borrowed", "Reserved", "Lost"})
+        cboStatus.SelectedIndex = 0
         LoadBooks()
     End Sub
 
@@ -23,7 +26,7 @@ Public Class BookForm
     '--------------------------------------------
     Private Sub LoadBooks()
         Try
-            Dim query As String = "SELECT * FROM Books"
+            Dim query As String = "SELECT Book_ID, Title, Author, Genre, Status FROM Books"
             Dim adapter As New SqlDataAdapter(query, con)
             Dim table As New DataTable()
             adapter.Fill(table)
@@ -49,11 +52,11 @@ Public Class BookForm
         End If
 
         Try
-            Dim query As String = "INSERT INTO Books (Title, Author, Category, Status) VALUES (@Title, @Author, @Category, @Status)"
+            Dim query As String = "INSERT INTO Books (Title, Author, Genre, Status) VALUES (@Title, @Author, @Genre, @Status)"
             Using cmd As New SqlCommand(query, con)
                 cmd.Parameters.AddWithValue("@Title", txtTitle.Text)
                 cmd.Parameters.AddWithValue("@Author", txtAuthor.Text)
-                cmd.Parameters.AddWithValue("@Category", txtGenre.Text)
+                cmd.Parameters.AddWithValue("@Genre", txtGenre.Text)
                 cmd.Parameters.AddWithValue("@Status", cboStatus.Text)
 
                 con.Open()
@@ -75,19 +78,19 @@ Public Class BookForm
     ' UPDATE BOOK RECORD
     '--------------------------------------------
     Private Sub btnUpdate_Click(sender As Object, e As EventArgs) Handles btnUpdate.Click
-        If txtBookID.Text = "" Then
+        If txtBook_ID.Text = "" Then
             MessageBox.Show("Please select a book record to update.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             Exit Sub
         End If
 
         Try
-            Dim query As String = "UPDATE Books SET Title=@Title, Author=@Author, Category=@Category, Status=@Status WHERE BookID=@BookID"
+            Dim query As String = "UPDATE Books SET Title=@Title, Author=@Author, Genre=@Genre, Status=@Status WHERE Book_ID=@Book_ID"
             Using cmd As New SqlCommand(query, con)
                 cmd.Parameters.AddWithValue("@Title", txtTitle.Text)
                 cmd.Parameters.AddWithValue("@Author", txtAuthor.Text)
-                cmd.Parameters.AddWithValue("@Category", txtGenre.Text)
+                cmd.Parameters.AddWithValue("@Genre", txtGenre.Text)
                 cmd.Parameters.AddWithValue("@Status", cboStatus.Text)
-                cmd.Parameters.AddWithValue("@BookID", txtBookID.Text)
+                cmd.Parameters.AddWithValue("@Book_ID", txtBook_ID.Text)
 
                 con.Open()
                 cmd.ExecuteNonQuery()
@@ -108,16 +111,16 @@ Public Class BookForm
     ' DELETE BOOK RECORD
     '--------------------------------------------
     Private Sub btnDelete_Click(sender As Object, e As EventArgs) Handles btnDelete.Click
-        If txtBookID.Text = "" Then
+        If txtBook_ID.Text = "" Then
             MessageBox.Show("Please select a book to delete.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             Exit Sub
         End If
 
         If MessageBox.Show("Are you sure you want to delete this book?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
             Try
-                Dim query As String = "DELETE FROM Books WHERE BookID=@BookID"
+                Dim query As String = "DELETE FROM Books WHERE Book_ID=@Book_ID"
                 Using cmd As New SqlCommand(query, con)
-                    cmd.Parameters.AddWithValue("@BookID", txtBookID.Text)
+                    cmd.Parameters.AddWithValue("@Book_ID", txtBook_ID.Text)
                     con.Open()
                     cmd.ExecuteNonQuery()
                     con.Close()
@@ -160,10 +163,10 @@ Public Class BookForm
     Private Sub dgvBooks_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvBooks.CellClick
         If e.RowIndex >= 0 Then
             Dim row As DataGridViewRow = dgvBooks.Rows(e.RowIndex)
-            txtBookID.Text = row.Cells("BookID").Value.ToString()
+            txtBook_ID.Text = row.Cells("Book_ID").Value.ToString()
             txtTitle.Text = row.Cells("Title").Value.ToString()
             txtAuthor.Text = row.Cells("Author").Value.ToString()
-            txtGenre.Text = row.Cells("Category").Value.ToString()
+            txtGenre.Text = row.Cells("Genre").Value.ToString()
             cboStatus.Text = row.Cells("Status").Value.ToString()
         End If
     End Sub
@@ -177,7 +180,7 @@ Public Class BookForm
     End Sub
 
     Private Sub ClearFields()
-        txtBookID.Clear()
+        txtBook_ID.Clear()
         txtTitle.Clear()
         txtAuthor.Clear()
         txtGenre.Clear()
