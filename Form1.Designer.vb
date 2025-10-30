@@ -22,10 +22,31 @@ Partial Class Form1
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        components = New System.ComponentModel.Container()
-        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(800, 450)
-        Me.Text = "Form1"
+        DataGridView1 = New DataGridView()
+        CType(DataGridView1, ComponentModel.ISupportInitialize).BeginInit()
+        SuspendLayout()
+        ' 
+        ' DataGridView1
+        ' 
+        DataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        DataGridView1.Location = New Point(145, 186)
+        DataGridView1.Name = "DataGridView1"
+        DataGridView1.RowHeadersWidth = 51
+        DataGridView1.Size = New Size(300, 188)
+        DataGridView1.TabIndex = 0
+        ' 
+        ' Form1
+        ' 
+        AutoScaleDimensions = New SizeF(8F, 20F)
+        AutoScaleMode = AutoScaleMode.Font
+        ClientSize = New Size(800, 450)
+        Controls.Add(DataGridView1)
+        Name = "Form1"
+        Text = "Form1"
+        CType(DataGridView1, ComponentModel.ISupportInitialize).EndInit()
+        ResumeLayout(False)
     End Sub
+
+    Friend WithEvents DataGridView1 As DataGridView
 
 End Class
