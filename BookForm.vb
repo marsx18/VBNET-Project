@@ -8,7 +8,7 @@ Public Class BookForm
     ' DATABASE CONNECTION
     '--------------------------------------------
     Dim databasePath As String = Path.Combine(Application.StartupPath, "..\..\..\Database\Library.mdf")
-    Dim con As New SqlConnection("Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Projects\VBNET-Project\Database\Library.mdf;Integrated Security=True;Connect Timeout=30")
+    Dim con As New SqlConnection("Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Databases\Library.mdf;Integrated Security=True;Connect Timeout=30")
 
     '--------------------------------------------
     ' LOAD DATA WHEN FORM OPENS
@@ -183,5 +183,9 @@ Public Class BookForm
         txtGenre.Clear()
         cboStatus.SelectedIndex = -1
         txtSearch.Clear()
+    End Sub
+
+    Private Sub dgvBooks_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvBooks.CellContentClick
+
     End Sub
 End Class
