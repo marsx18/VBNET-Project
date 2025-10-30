@@ -24,6 +24,7 @@ Partial Class Form1
     Private Sub InitializeComponent()
         DataGridView1 = New DataGridView()
         Label1 = New Label()
+        Label2 = New Label()
         CType(DataGridView1, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
@@ -45,11 +46,21 @@ Partial Class Form1
         Label1.TabIndex = 1
         Label1.Text = "SYIMIR NIIGGA"
         ' 
+        ' Label2
+        ' 
+        Label2.AutoSize = True
+        Label2.Location = New Point(527, 97)
+        Label2.Name = "Label2"
+        Label2.Size = New Size(53, 20)
+        Label2.TabIndex = 2
+        Label2.Text = "Label2"
+        ' 
         ' Form1
         ' 
         AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(800, 450)
+        Controls.Add(Label2)
         Controls.Add(Label1)
         Controls.Add(DataGridView1)
         Name = "Form1"
@@ -61,5 +72,6 @@ Partial Class Form1
 
     Friend WithEvents DataGridView1 As DataGridView
     Friend WithEvents Label1 As Label
+    Friend WithEvents Label2 As Label
 
 End Class
