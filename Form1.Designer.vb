@@ -29,18 +29,20 @@ Partial Class Form1
         ' DataGridView1
         ' 
         DataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridView1.Location = New Point(145, 186)
+        DataGridView1.Location = New Point(208, 77)
+        DataGridView1.Margin = New Padding(3, 2, 3, 2)
         DataGridView1.Name = "DataGridView1"
         DataGridView1.RowHeadersWidth = 51
-        DataGridView1.Size = New Size(300, 188)
+        DataGridView1.Size = New Size(262, 141)
         DataGridView1.TabIndex = 0
         ' 
         ' Form1
         ' 
-        AutoScaleDimensions = New SizeF(8F, 20F)
+        AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(800, 450)
+        ClientSize = New Size(802, 436)
         Controls.Add(DataGridView1)
+        Margin = New Padding(3, 2, 3, 2)
         Name = "Form1"
         Text = "Form1"
         CType(DataGridView1, ComponentModel.ISupportInitialize).EndInit()
