@@ -1,15 +1,15 @@
 ﻿Public Class MainForm
     Private Sub BooksToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles BooksToolStripMenuItem.Click
-        BookForm.Show()
+
 
     End Sub
 
-    Private Sub MembersToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles MembersToolStripMenuItem.Click
+    Private Sub MembersToolStripMenuItem_Click(sender As Object, e As EventArgs)
         MembersForm.Show()
 
     End Sub
 
-    Private Sub BorrowToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles BorrowToolStripMenuItem.Click
+    Private Sub BorrowToolStripMenuItem_Click(sender As Object, e As EventArgs)
         BorrowForm.Show()
     End Sub
 
@@ -20,5 +20,21 @@
     Private Sub LogoutToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LogoutToolStripMenuItem.Click
         LoginForm.Show()
         Me.Hide()
+    End Sub
+
+    Private Sub MembersListToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles MembersListToolStripMenuItem.Click
+        BookForm.Show()
+    End Sub
+
+    Private Sub MainForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+    End Sub
+
+    Private Sub BorrowReturnToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles BorrowReturnToolStripMenuItem.Click
+        MembersForm.Show()
+    End Sub
+
+    Private Sub BorrowReturnToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles BorrowReturnToolStripMenuItem1.Click
+        BorrowForm.Show()
     End Sub
 End Class

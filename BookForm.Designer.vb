@@ -56,98 +56,96 @@ Partial Class BookForm
         dgvBooks.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
         dgvBooks.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
         dgvBooks.Dock = DockStyle.Bottom
-        dgvBooks.Location = New Point(0, 477)
-        dgvBooks.Margin = New Padding(3, 2, 3, 2)
+        dgvBooks.Location = New Point(0, 636)
         dgvBooks.Name = "dgvBooks"
         dgvBooks.ReadOnly = True
         dgvBooks.RowHeadersWidth = 51
         dgvBooks.SelectionMode = DataGridViewSelectionMode.FullRowSelect
-        dgvBooks.Size = New Size(728, 175)
+        dgvBooks.Size = New Size(1033, 233)
         dgvBooks.TabIndex = 0
         ' 
         ' Label1
         ' 
         Label1.AutoSize = True
         Label1.Font = New Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        Label1.Location = New Point(36, 82)
+        Label1.Location = New Point(41, 109)
         Label1.Name = "Label1"
-        Label1.Size = New Size(39, 17)
+        Label1.Size = New Size(51, 23)
         Label1.TabIndex = 1
         Label1.Text = "Title :" & vbCrLf
         ' 
         ' txtTitle
         ' 
         txtTitle.Font = New Font("Segoe UI", 9.75F)
-        txtTitle.Location = New Point(113, 74)
-        txtTitle.Margin = New Padding(3, 2, 3, 2)
+        txtTitle.Location = New Point(129, 99)
         txtTitle.Name = "txtTitle"
-        txtTitle.Size = New Size(246, 25)
+        txtTitle.Size = New Size(281, 29)
         txtTitle.TabIndex = 2
         ' 
         ' Label2
         ' 
         Label2.AutoSize = True
         Label2.Font = New Font("Segoe UI", 9.75F)
-        Label2.Location = New Point(36, 126)
+        Label2.Location = New Point(41, 168)
         Label2.Name = "Label2"
-        Label2.Size = New Size(54, 17)
+        Label2.Size = New Size(72, 23)
         Label2.TabIndex = 3
         Label2.Text = "Author :"
         ' 
         ' txtAuthor
         ' 
         txtAuthor.Font = New Font("Segoe UI", 9.75F)
-        txtAuthor.Location = New Point(113, 118)
-        txtAuthor.Margin = New Padding(3, 2, 3, 2)
+        txtAuthor.Location = New Point(129, 157)
         txtAuthor.Name = "txtAuthor"
-        txtAuthor.Size = New Size(246, 25)
+        txtAuthor.Size = New Size(281, 29)
         txtAuthor.TabIndex = 4
         ' 
         ' Label3
         ' 
         Label3.AutoSize = True
         Label3.Font = New Font("Segoe UI", 9.75F)
-        Label3.Location = New Point(36, 166)
+        Label3.Location = New Point(41, 221)
         Label3.Name = "Label3"
-        Label3.Size = New Size(50, 17)
+        Label3.Size = New Size(65, 23)
         Label3.TabIndex = 5
         Label3.Text = "Genre :"
         ' 
         ' txtGenre
         ' 
         txtGenre.Font = New Font("Segoe UI", 9.75F)
-        txtGenre.Location = New Point(113, 158)
-        txtGenre.Margin = New Padding(3, 2, 3, 2)
+        txtGenre.Location = New Point(129, 211)
         txtGenre.Name = "txtGenre"
-        txtGenre.Size = New Size(246, 25)
+        txtGenre.Size = New Size(281, 29)
         txtGenre.TabIndex = 6
         ' 
         ' Label4
         ' 
         Label4.AutoSize = True
         Label4.Font = New Font("Segoe UI", 9.75F)
-        Label4.Location = New Point(36, 206)
+        Label4.Location = New Point(41, 275)
         Label4.Name = "Label4"
-        Label4.Size = New Size(50, 17)
+        Label4.Size = New Size(65, 23)
         Label4.TabIndex = 7
         Label4.Text = "Status :"
         ' 
         ' btnAdd
         ' 
-        btnAdd.Location = New Point(12, 338)
-        btnAdd.Margin = New Padding(3, 2, 3, 2)
+        btnAdd.Font = New Font("Segoe UI", 10.2F, FontStyle.Bold)
+        btnAdd.ForeColor = Color.Green
+        btnAdd.Location = New Point(14, 451)
         btnAdd.Name = "btnAdd"
-        btnAdd.Size = New Size(105, 30)
+        btnAdd.Size = New Size(120, 40)
         btnAdd.TabIndex = 9
         btnAdd.Text = "Add"
         btnAdd.UseVisualStyleBackColor = True
         ' 
         ' btnUpdate
         ' 
-        btnUpdate.Location = New Point(162, 338)
-        btnUpdate.Margin = New Padding(3, 2, 3, 2)
+        btnUpdate.Font = New Font("Segoe UI", 10.2F, FontStyle.Bold)
+        btnUpdate.ForeColor = Color.Green
+        btnUpdate.Location = New Point(185, 451)
         btnUpdate.Name = "btnUpdate"
-        btnUpdate.Size = New Size(105, 30)
+        btnUpdate.Size = New Size(120, 40)
         btnUpdate.TabIndex = 10
         btnUpdate.Text = "Update"
         btnUpdate.UseVisualStyleBackColor = True
@@ -158,8 +156,9 @@ Partial Class BookForm
         Panel1.Controls.Add(lblTitle)
         Panel1.Dock = DockStyle.Top
         Panel1.Location = New Point(0, 0)
+        Panel1.Margin = New Padding(3, 4, 3, 4)
         Panel1.Name = "Panel1"
-        Panel1.Size = New Size(728, 60)
+        Panel1.Size = New Size(1033, 80)
         Panel1.TabIndex = 11
         ' 
         ' lblTitle
@@ -167,9 +166,9 @@ Partial Class BookForm
         lblTitle.Anchor = AnchorStyles.None
         lblTitle.BackColor = Color.Transparent
         lblTitle.Font = New Font("Arial", 20.25F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        lblTitle.Location = New Point(-78, 0)
+        lblTitle.Location = New Point(11, 0)
         lblTitle.Name = "lblTitle"
-        lblTitle.Size = New Size(884, 60)
+        lblTitle.Size = New Size(1010, 80)
         lblTitle.TabIndex = 0
         lblTitle.Text = "Book Management"
         lblTitle.TextAlign = ContentAlignment.MiddleCenter
@@ -186,11 +185,12 @@ Partial Class BookForm
         grpBookDetails.Controls.Add(Label3)
         grpBookDetails.Controls.Add(Label4)
         grpBookDetails.Controls.Add(txtGenre)
-        grpBookDetails.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        grpBookDetails.Location = New Point(12, 73)
-        grpBookDetails.Margin = New Padding(3, 10, 3, 3)
+        grpBookDetails.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        grpBookDetails.Location = New Point(14, 97)
+        grpBookDetails.Margin = New Padding(3, 13, 3, 4)
         grpBookDetails.Name = "grpBookDetails"
-        grpBookDetails.Size = New Size(704, 248)
+        grpBookDetails.Padding = New Padding(3, 4, 3, 4)
+        grpBookDetails.Size = New Size(805, 331)
         grpBookDetails.TabIndex = 12
         grpBookDetails.TabStop = False
         grpBookDetails.Text = "Book Information"
@@ -198,20 +198,19 @@ Partial Class BookForm
         ' txtBook_ID
         ' 
         txtBook_ID.Font = New Font("Segoe UI", 9.75F)
-        txtBook_ID.Location = New Point(113, 33)
-        txtBook_ID.Margin = New Padding(3, 2, 3, 2)
+        txtBook_ID.Location = New Point(129, 44)
         txtBook_ID.Name = "txtBook_ID"
         txtBook_ID.ReadOnly = True
-        txtBook_ID.Size = New Size(65, 25)
+        txtBook_ID.Size = New Size(74, 29)
         txtBook_ID.TabIndex = 13
         ' 
         ' Label5
         ' 
         Label5.AutoSize = True
         Label5.Font = New Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        Label5.Location = New Point(36, 41)
+        Label5.Location = New Point(41, 55)
         Label5.Name = "Label5"
-        Label5.Size = New Size(60, 17)
+        Label5.Size = New Size(79, 23)
         Label5.TabIndex = 12
         Label5.Text = "Book ID :"
         ' 
@@ -220,35 +219,43 @@ Partial Class BookForm
         cboStatus.Font = New Font("Segoe UI", 9.75F)
         cboStatus.FormattingEnabled = True
         cboStatus.Items.AddRange(New Object() {"Available", "Booked"})
-        cboStatus.Location = New Point(113, 198)
-        cboStatus.Margin = New Padding(3, 2, 3, 2)
+        cboStatus.Location = New Point(129, 264)
         cboStatus.Name = "cboStatus"
-        cboStatus.Size = New Size(103, 25)
+        cboStatus.Size = New Size(117, 29)
         cboStatus.TabIndex = 11
         ' 
         ' btnDelete
         ' 
-        btnDelete.Location = New Point(316, 338)
+        btnDelete.Font = New Font("Segoe UI", 10.2F, FontStyle.Bold)
+        btnDelete.ForeColor = Color.Green
+        btnDelete.Location = New Point(361, 451)
+        btnDelete.Margin = New Padding(3, 4, 3, 4)
         btnDelete.Name = "btnDelete"
-        btnDelete.Size = New Size(105, 30)
+        btnDelete.Size = New Size(120, 40)
         btnDelete.TabIndex = 13
         btnDelete.Text = "Delete"
         btnDelete.UseVisualStyleBackColor = True
         ' 
         ' btnClear
         ' 
-        btnClear.Location = New Point(467, 338)
+        btnClear.Font = New Font("Segoe UI", 10.2F, FontStyle.Bold)
+        btnClear.ForeColor = Color.Green
+        btnClear.Location = New Point(534, 451)
+        btnClear.Margin = New Padding(3, 4, 3, 4)
         btnClear.Name = "btnClear"
-        btnClear.Size = New Size(105, 30)
+        btnClear.Size = New Size(120, 40)
         btnClear.TabIndex = 14
         btnClear.Text = "Clear"
         btnClear.UseVisualStyleBackColor = True
         ' 
         ' btnSearch
         ' 
-        btnSearch.Location = New Point(611, 338)
+        btnSearch.Font = New Font("Segoe UI", 10.2F, FontStyle.Bold)
+        btnSearch.ForeColor = Color.Green
+        btnSearch.Location = New Point(698, 451)
+        btnSearch.Margin = New Padding(3, 4, 3, 4)
         btnSearch.Name = "btnSearch"
-        btnSearch.Size = New Size(105, 30)
+        btnSearch.Size = New Size(120, 40)
         btnSearch.TabIndex = 15
         btnSearch.Text = "Search"
         btnSearch.UseVisualStyleBackColor = True
@@ -256,25 +263,29 @@ Partial Class BookForm
         ' Label6
         ' 
         Label6.AutoSize = True
-        Label6.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        Label6.Location = New Point(12, 401)
+        Label6.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label6.Location = New Point(14, 535)
         Label6.Name = "Label6"
-        Label6.Size = New Size(113, 21)
+        Label6.Size = New Size(141, 28)
         Label6.TabIndex = 16
         Label6.Text = "Book Records"
         ' 
         ' txtSearch
         ' 
-        txtSearch.Location = New Point(17, 436)
+        txtSearch.Location = New Point(19, 581)
+        txtSearch.Margin = New Padding(3, 4, 3, 4)
         txtSearch.Name = "txtSearch"
-        txtSearch.Size = New Size(308, 23)
+        txtSearch.Size = New Size(351, 27)
         txtSearch.TabIndex = 17
         ' 
         ' btnSearch2
         ' 
-        btnSearch2.Location = New Point(346, 436)
+        btnSearch2.Font = New Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        btnSearch2.ForeColor = Color.Green
+        btnSearch2.Location = New Point(395, 581)
+        btnSearch2.Margin = New Padding(3, 4, 3, 4)
         btnSearch2.Name = "btnSearch2"
-        btnSearch2.Size = New Size(75, 23)
+        btnSearch2.Size = New Size(86, 31)
         btnSearch2.TabIndex = 18
         btnSearch2.Text = "Search"
         btnSearch2.UseVisualStyleBackColor = True
@@ -286,9 +297,10 @@ Partial Class BookForm
         ' 
         ' BookForm
         ' 
-        AutoScaleDimensions = New SizeF(7F, 15F)
+        AutoScaleDimensions = New SizeF(8.0F, 20.0F)
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(728, 652)
+        BackColor = Color.Honeydew
+        ClientSize = New Size(1033, 869)
         Controls.Add(btnSearch2)
         Controls.Add(txtSearch)
         Controls.Add(Label6)
@@ -300,7 +312,6 @@ Partial Class BookForm
         Controls.Add(Panel1)
         Controls.Add(btnUpdate)
         Controls.Add(btnAdd)
-        Margin = New Padding(3, 2, 3, 2)
         Name = "BookForm"
         Text = "Library Management System"
         CType(dgvBooks, ComponentModel.ISupportInitialize).EndInit()

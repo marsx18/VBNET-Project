@@ -8,7 +8,7 @@ Public Class BookForm
     ' DATABASE CONNECTION
     '--------------------------------------------
     Dim databasePath As String = Path.Combine(Application.StartupPath, "..\..\..\Database\Library.mdf")
-    Dim con As New SqlConnection("Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Projects\marsx18\VBNET-Project\Database\Library.mdf;Integrated Security=True;Connect Timeout=30")
+    Dim con As New SqlConnection("Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Databases\Library.mdf;Integrated Security=True;Connect Timeout=30;Encrypt=True")
 
     '--------------------------------------------
     ' LOAD DATA WHEN FORM OPENS

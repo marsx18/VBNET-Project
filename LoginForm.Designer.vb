@@ -28,63 +28,100 @@ Partial Class LoginForm
         lblPass = New Label()
         lblUser = New Label()
         btnSignup = New Button()
+        PictureBox1 = New PictureBox()
+        Label1 = New Label()
+        CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' btnLogin
         ' 
-        btnLogin.Location = New Point(240, 296)
+        btnLogin.BackColor = Color.Green
+        btnLogin.Font = New Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        btnLogin.ForeColor = Color.White
+        btnLogin.Location = New Point(240, 270)
         btnLogin.Name = "btnLogin"
         btnLogin.Size = New Size(125, 61)
         btnLogin.TabIndex = 21
         btnLogin.Text = "Login"
-        btnLogin.UseVisualStyleBackColor = True
+        btnLogin.UseVisualStyleBackColor = False
         ' 
         ' txtPassword
         ' 
-        txtPassword.Location = New Point(360, 196)
+        txtPassword.Font = New Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        txtPassword.Location = New Point(174, 190)
         txtPassword.Name = "txtPassword"
-        txtPassword.Size = New Size(125, 27)
+        txtPassword.Size = New Size(191, 31)
         txtPassword.TabIndex = 18
         ' 
         ' txtUsername
         ' 
-        txtUsername.Location = New Point(360, 146)
+        txtUsername.Font = New Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        txtUsername.Location = New Point(174, 137)
         txtUsername.Name = "txtUsername"
-        txtUsername.Size = New Size(125, 27)
+        txtUsername.Size = New Size(191, 31)
         txtUsername.TabIndex = 17
         ' 
         ' lblPass
         ' 
         lblPass.AutoSize = True
-        lblPass.Location = New Point(268, 199)
+        lblPass.Font = New Font("Segoe UI Semibold", 12F, FontStyle.Bold)
+        lblPass.Location = New Point(46, 190)
         lblPass.Name = "lblPass"
-        lblPass.Size = New Size(73, 20)
+        lblPass.Size = New Size(102, 28)
         lblPass.TabIndex = 16
         lblPass.Text = "Password:"
         ' 
         ' lblUser
         ' 
         lblUser.AutoSize = True
-        lblUser.Location = New Point(263, 149)
+        lblUser.Font = New Font("Segoe UI Semibold", 12F, FontStyle.Bold)
+        lblUser.Location = New Point(39, 137)
         lblUser.Name = "lblUser"
-        lblUser.Size = New Size(78, 20)
+        lblUser.Size = New Size(109, 28)
         lblUser.TabIndex = 15
         lblUser.Text = "Username:"
         ' 
         ' btnSignup
         ' 
-        btnSignup.Location = New Point(395, 296)
+        btnSignup.BackColor = Color.Lavender
+        btnSignup.Font = New Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        btnSignup.ForeColor = Color.Black
+        btnSignup.Location = New Point(12, 380)
         btnSignup.Name = "btnSignup"
-        btnSignup.Size = New Size(125, 61)
+        btnSignup.Size = New Size(125, 58)
         btnSignup.TabIndex = 22
         btnSignup.Text = "Sign Up"
-        btnSignup.UseVisualStyleBackColor = True
+        btnSignup.UseVisualStyleBackColor = False
+        ' 
+        ' PictureBox1
+        ' 
+        PictureBox1.BorderStyle = BorderStyle.FixedSingle
+        PictureBox1.Image = My.Resources.Resources._29163523685110
+        PictureBox1.Location = New Point(459, 105)
+        PictureBox1.Name = "PictureBox1"
+        PictureBox1.Size = New Size(245, 195)
+        PictureBox1.SizeMode = PictureBoxSizeMode.StretchImage
+        PictureBox1.TabIndex = 23
+        PictureBox1.TabStop = False
+        ' 
+        ' Label1
+        ' 
+        Label1.AutoSize = True
+        Label1.Font = New Font("Britannic Bold", 16.2F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label1.Location = New Point(165, 68)
+        Label1.Name = "Label1"
+        Label1.Size = New Size(134, 31)
+        Label1.TabIndex = 24
+        Label1.Text = "Welcome!"
         ' 
         ' LoginForm
         ' 
         AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
+        BackColor = SystemColors.GradientActiveCaption
         ClientSize = New Size(800, 450)
+        Controls.Add(Label1)
+        Controls.Add(PictureBox1)
         Controls.Add(btnSignup)
         Controls.Add(btnLogin)
         Controls.Add(txtPassword)
@@ -93,6 +130,7 @@ Partial Class LoginForm
         Controls.Add(lblUser)
         Name = "LoginForm"
         Text = "LoginForm"
+        CType(PictureBox1, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
         PerformLayout()
     End Sub
@@ -103,4 +141,6 @@ Partial Class LoginForm
     Friend WithEvents lblPass As Label
     Friend WithEvents lblUser As Label
     Friend WithEvents btnSignup As Button
+    Friend WithEvents PictureBox1 As PictureBox
+    Friend WithEvents Label1 As Label
 End Class

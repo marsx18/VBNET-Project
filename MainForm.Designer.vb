@@ -24,8 +24,9 @@ Partial Class MainForm
     Private Sub InitializeComponent()
         MenuStrip1 = New MenuStrip()
         BooksToolStripMenuItem = New ToolStripMenuItem()
-        MembersToolStripMenuItem = New ToolStripMenuItem()
-        BorrowToolStripMenuItem = New ToolStripMenuItem()
+        MembersListToolStripMenuItem = New ToolStripMenuItem()
+        BorrowReturnToolStripMenuItem = New ToolStripMenuItem()
+        BorrowReturnToolStripMenuItem1 = New ToolStripMenuItem()
         AboutToolStripMenuItem = New ToolStripMenuItem()
         LogoutToolStripMenuItem = New ToolStripMenuItem()
         MenuStrip1.SuspendLayout()
@@ -34,7 +35,7 @@ Partial Class MainForm
         ' MenuStrip1
         ' 
         MenuStrip1.ImageScalingSize = New Size(20, 20)
-        MenuStrip1.Items.AddRange(New ToolStripItem() {BooksToolStripMenuItem, MembersToolStripMenuItem, BorrowToolStripMenuItem, AboutToolStripMenuItem, LogoutToolStripMenuItem})
+        MenuStrip1.Items.AddRange(New ToolStripItem() {BooksToolStripMenuItem, AboutToolStripMenuItem, LogoutToolStripMenuItem})
         MenuStrip1.Location = New Point(0, 0)
         MenuStrip1.Name = "MenuStrip1"
         MenuStrip1.Size = New Size(800, 28)
@@ -43,33 +44,40 @@ Partial Class MainForm
         ' 
         ' BooksToolStripMenuItem
         ' 
+        BooksToolStripMenuItem.DropDownItems.AddRange(New ToolStripItem() {MembersListToolStripMenuItem, BorrowReturnToolStripMenuItem, BorrowReturnToolStripMenuItem1})
         BooksToolStripMenuItem.Name = "BooksToolStripMenuItem"
-        BooksToolStripMenuItem.Size = New Size(63, 24)
-        BooksToolStripMenuItem.Text = "Books"
+        BooksToolStripMenuItem.Size = New Size(58, 24)
+        BooksToolStripMenuItem.Text = "VIEW"
         ' 
-        ' MembersToolStripMenuItem
+        ' MembersListToolStripMenuItem
         ' 
-        MembersToolStripMenuItem.Name = "MembersToolStripMenuItem"
-        MembersToolStripMenuItem.Size = New Size(85, 24)
-        MembersToolStripMenuItem.Text = "Members"
+        MembersListToolStripMenuItem.Name = "MembersListToolStripMenuItem"
+        MembersListToolStripMenuItem.Size = New Size(240, 26)
+        MembersListToolStripMenuItem.Text = "Book Management"
         ' 
-        ' BorrowToolStripMenuItem
+        ' BorrowReturnToolStripMenuItem
         ' 
-        BorrowToolStripMenuItem.Name = "BorrowToolStripMenuItem"
-        BorrowToolStripMenuItem.Size = New Size(128, 24)
-        BorrowToolStripMenuItem.Text = "Borrow / Return"
+        BorrowReturnToolStripMenuItem.Name = "BorrowReturnToolStripMenuItem"
+        BorrowReturnToolStripMenuItem.Size = New Size(240, 26)
+        BorrowReturnToolStripMenuItem.Text = "Member Management"
+        ' 
+        ' BorrowReturnToolStripMenuItem1
+        ' 
+        BorrowReturnToolStripMenuItem1.Name = "BorrowReturnToolStripMenuItem1"
+        BorrowReturnToolStripMenuItem1.Size = New Size(240, 26)
+        BorrowReturnToolStripMenuItem1.Text = "Borrow / Return"
         ' 
         ' AboutToolStripMenuItem
         ' 
         AboutToolStripMenuItem.Name = "AboutToolStripMenuItem"
-        AboutToolStripMenuItem.Size = New Size(64, 24)
-        AboutToolStripMenuItem.Text = "About"
+        AboutToolStripMenuItem.Size = New Size(71, 24)
+        AboutToolStripMenuItem.Text = "ABOUT"
         ' 
         ' LogoutToolStripMenuItem
         ' 
         LogoutToolStripMenuItem.Name = "LogoutToolStripMenuItem"
-        LogoutToolStripMenuItem.Size = New Size(70, 24)
-        LogoutToolStripMenuItem.Text = "Logout"
+        LogoutToolStripMenuItem.Size = New Size(79, 24)
+        LogoutToolStripMenuItem.Text = "LOGOUT"
         ' 
         ' MainForm
         ' 
@@ -88,8 +96,9 @@ Partial Class MainForm
 
     Friend WithEvents MenuStrip1 As MenuStrip
     Friend WithEvents BooksToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents MembersToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents BorrowToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents AboutToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents LogoutToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents MembersListToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents BorrowReturnToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents BorrowReturnToolStripMenuItem1 As ToolStripMenuItem
 End Class

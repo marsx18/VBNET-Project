@@ -2,7 +2,7 @@
 Imports Microsoft.Data.SqlClient
 
 Public Class LoginForm
-    Dim con As New SqlConnection("Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Databases\Library.mdf;Integrated Security=True;Connect Timeout=30")
+    Dim con As New SqlConnection("Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Databases\Library.mdf;Integrated Security=True;Connect Timeout=30;Encrypt=True")
 
     Private Sub btnLogin_Click(sender As Object, e As EventArgs) Handles btnLogin.Click
         Try
@@ -36,5 +36,13 @@ Public Class LoginForm
     Private Sub btnSignup_Click(sender As Object, e As EventArgs) Handles btnSignup.Click
         SignUpForm.Show()
         Me.Hide()
+    End Sub
+
+    Private Sub LoginForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+    End Sub
+
+    Private Sub lblUser_Click(sender As Object, e As EventArgs) Handles lblUser.Click
+
     End Sub
 End Class
