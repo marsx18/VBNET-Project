@@ -35,124 +35,181 @@ Partial Class BorrowForm
         dgvBorrowRecords = New DataGridView()
         lblReturn = New Label()
         dtpReturn = New DateTimePicker()
+        btnGenerateReport = New Button()
+        Panel1 = New Panel()
+        lblTitle = New Label()
         CType(dgvBorrowRecords, ComponentModel.ISupportInitialize).BeginInit()
+        Panel1.SuspendLayout()
         SuspendLayout()
         ' 
         ' cmbMember
         ' 
+        cmbMember.Font = New Font("Segoe UI", 10.2F)
         cmbMember.FormattingEnabled = True
-        cmbMember.Location = New Point(146, 54)
+        cmbMember.Location = New Point(200, 139)
         cmbMember.Name = "cmbMember"
-        cmbMember.Size = New Size(151, 28)
+        cmbMember.Size = New Size(191, 31)
         cmbMember.TabIndex = 0
         ' 
         ' lblMember
         ' 
         lblMember.AutoSize = True
-        lblMember.Location = New Point(63, 57)
+        lblMember.Font = New Font("Segoe UI Semibold", 12F, FontStyle.Bold)
+        lblMember.Location = New Point(68, 135)
         lblMember.Name = "lblMember"
-        lblMember.Size = New Size(68, 20)
+        lblMember.Size = New Size(95, 28)
         lblMember.TabIndex = 1
         lblMember.Text = "Member:"
         ' 
         ' lblBook
         ' 
         lblBook.AutoSize = True
-        lblBook.Location = New Point(63, 103)
+        lblBook.Font = New Font("Segoe UI Semibold", 12F, FontStyle.Bold)
+        lblBook.Location = New Point(68, 181)
         lblBook.Name = "lblBook"
-        lblBook.Size = New Size(46, 20)
+        lblBook.Size = New Size(65, 28)
         lblBook.TabIndex = 2
         lblBook.Text = "Book:"
         ' 
         ' cmbBook
         ' 
+        cmbBook.Font = New Font("Segoe UI", 10.2F)
         cmbBook.FormattingEnabled = True
-        cmbBook.Location = New Point(146, 103)
+        cmbBook.Location = New Point(200, 183)
         cmbBook.Name = "cmbBook"
-        cmbBook.Size = New Size(151, 28)
+        cmbBook.Size = New Size(191, 31)
         cmbBook.TabIndex = 3
         ' 
         ' Label3
         ' 
         Label3.AutoSize = True
-        Label3.Location = New Point(63, 159)
+        Label3.Font = New Font("Segoe UI Semibold", 12F, FontStyle.Bold)
+        Label3.Location = New Point(68, 237)
         Label3.Name = "Label3"
-        Label3.Size = New Size(94, 20)
+        Label3.Size = New Size(128, 28)
         Label3.TabIndex = 4
         Label3.Text = "Borrow date:"
         ' 
         ' Label4
         ' 
         Label4.AutoSize = True
-        Label4.Location = New Point(63, 196)
+        Label4.Font = New Font("Segoe UI Semibold", 12F, FontStyle.Bold)
+        Label4.Location = New Point(68, 274)
         Label4.Name = "Label4"
-        Label4.Size = New Size(73, 20)
+        Label4.Size = New Size(100, 28)
         Label4.TabIndex = 5
         Label4.Text = "Due date:"
         ' 
         ' dtpBorrow
         ' 
-        dtpBorrow.Location = New Point(163, 154)
+        dtpBorrow.Font = New Font("Segoe UI", 10.2F)
+        dtpBorrow.Location = New Point(217, 239)
         dtpBorrow.Name = "dtpBorrow"
-        dtpBorrow.Size = New Size(250, 27)
+        dtpBorrow.Size = New Size(277, 30)
         dtpBorrow.TabIndex = 7
         ' 
         ' dtpDue
         ' 
-        dtpDue.Location = New Point(163, 191)
+        dtpDue.Font = New Font("Segoe UI", 10.2F)
+        dtpDue.Location = New Point(217, 276)
         dtpDue.Name = "dtpDue"
-        dtpDue.Size = New Size(250, 27)
+        dtpDue.Size = New Size(277, 30)
         dtpDue.TabIndex = 8
         ' 
         ' btnBorrow
         ' 
-        btnBorrow.Location = New Point(99, 278)
+        btnBorrow.BackColor = Color.Honeydew
+        btnBorrow.Font = New Font("Segoe UI", 10.2F, FontStyle.Bold)
+        btnBorrow.ForeColor = Color.Green
+        btnBorrow.Location = New Point(101, 360)
         btnBorrow.Name = "btnBorrow"
-        btnBorrow.Size = New Size(94, 29)
+        btnBorrow.Size = New Size(135, 53)
         btnBorrow.TabIndex = 9
         btnBorrow.Text = "Borrow"
-        btnBorrow.UseVisualStyleBackColor = True
+        btnBorrow.UseVisualStyleBackColor = False
         ' 
         ' btnReturn
         ' 
-        btnReturn.Location = New Point(254, 278)
+        btnReturn.BackColor = Color.Honeydew
+        btnReturn.Font = New Font("Segoe UI", 10.2F, FontStyle.Bold)
+        btnReturn.ForeColor = Color.Green
+        btnReturn.Location = New Point(256, 360)
         btnReturn.Name = "btnReturn"
-        btnReturn.Size = New Size(94, 29)
+        btnReturn.Size = New Size(135, 53)
         btnReturn.TabIndex = 10
         btnReturn.Text = "Return"
-        btnReturn.UseVisualStyleBackColor = True
+        btnReturn.UseVisualStyleBackColor = False
         ' 
         ' dgvBorrowRecords
         ' 
         dgvBorrowRecords.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
         dgvBorrowRecords.Dock = DockStyle.Bottom
-        dgvBorrowRecords.Location = New Point(0, 339)
+        dgvBorrowRecords.Location = New Point(0, 442)
         dgvBorrowRecords.Name = "dgvBorrowRecords"
         dgvBorrowRecords.RowHeadersWidth = 51
-        dgvBorrowRecords.Size = New Size(925, 261)
+        dgvBorrowRecords.Size = New Size(925, 232)
         dgvBorrowRecords.TabIndex = 11
         ' 
         ' lblReturn
         ' 
         lblReturn.AutoSize = True
-        lblReturn.Location = New Point(555, 159)
+        lblReturn.Font = New Font("Segoe UI Semibold", 12F, FontStyle.Bold)
+        lblReturn.Location = New Point(565, 245)
         lblReturn.Name = "lblReturn"
-        lblReturn.Size = New Size(89, 20)
+        lblReturn.Size = New Size(123, 28)
         lblReturn.TabIndex = 12
         lblReturn.Text = "Return date:"
         ' 
         ' dtpReturn
         ' 
-        dtpReturn.Location = New Point(555, 189)
+        dtpReturn.Font = New Font("Segoe UI", 10.2F)
+        dtpReturn.Location = New Point(565, 276)
         dtpReturn.Name = "dtpReturn"
-        dtpReturn.Size = New Size(250, 27)
+        dtpReturn.Size = New Size(283, 30)
         dtpReturn.TabIndex = 13
+        ' 
+        ' btnGenerateReport
+        ' 
+        btnGenerateReport.BackColor = Color.Honeydew
+        btnGenerateReport.Font = New Font("Segoe UI", 10.2F, FontStyle.Bold)
+        btnGenerateReport.ForeColor = Color.Green
+        btnGenerateReport.Location = New Point(537, 360)
+        btnGenerateReport.Name = "btnGenerateReport"
+        btnGenerateReport.Size = New Size(188, 53)
+        btnGenerateReport.TabIndex = 14
+        btnGenerateReport.Text = "Generate Report"
+        btnGenerateReport.UseVisualStyleBackColor = False
+        ' 
+        ' Panel1
+        ' 
+        Panel1.BackColor = Color.PaleGreen
+        Panel1.Controls.Add(lblTitle)
+        Panel1.Dock = DockStyle.Top
+        Panel1.Location = New Point(0, 0)
+        Panel1.Margin = New Padding(3, 4, 3, 4)
+        Panel1.Name = "Panel1"
+        Panel1.Size = New Size(925, 80)
+        Panel1.TabIndex = 15
+        ' 
+        ' lblTitle
+        ' 
+        lblTitle.Anchor = AnchorStyles.None
+        lblTitle.BackColor = Color.Transparent
+        lblTitle.Font = New Font("Arial", 20.25F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        lblTitle.Location = New Point(226, 0)
+        lblTitle.Name = "lblTitle"
+        lblTitle.Size = New Size(512, 80)
+        lblTitle.TabIndex = 0
+        lblTitle.Text = "Borrow/Return Management"
+        lblTitle.TextAlign = ContentAlignment.MiddleCenter
         ' 
         ' BorrowForm
         ' 
         AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(925, 600)
+        ClientSize = New Size(925, 674)
+        Controls.Add(Panel1)
+        Controls.Add(btnGenerateReport)
         Controls.Add(dtpReturn)
         Controls.Add(lblReturn)
         Controls.Add(dgvBorrowRecords)
@@ -169,6 +226,7 @@ Partial Class BorrowForm
         Name = "BorrowForm"
         Text = "BorrowForm"
         CType(dgvBorrowRecords, ComponentModel.ISupportInitialize).EndInit()
+        Panel1.ResumeLayout(False)
         ResumeLayout(False)
         PerformLayout()
     End Sub
@@ -186,4 +244,7 @@ Partial Class BorrowForm
     Friend WithEvents dgvBorrowRecords As DataGridView
     Friend WithEvents lblReturn As Label
     Friend WithEvents dtpReturn As DateTimePicker
+    Friend WithEvents btnGenerateReport As Button
+    Friend WithEvents Panel1 As Panel
+    Friend WithEvents lblTitle As Label
 End Class

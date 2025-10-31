@@ -32,7 +32,6 @@ Partial Class MembersForm
         btnUpdate = New Button()
         btnDelete = New Button()
         btnClear = New Button()
-        lblSearch = New Label()
         txtSearch = New TextBox()
         btnSearch = New Button()
         dgvMembers = New DataGridView()
@@ -79,7 +78,7 @@ Partial Class MembersForm
         txtName.Font = New Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         txtName.Location = New Point(136, 61)
         txtName.Name = "txtName"
-        txtName.Size = New Size(228, 30)
+        txtName.Size = New Size(283, 30)
         txtName.TabIndex = 3
         ' 
         ' txtPhone
@@ -87,7 +86,7 @@ Partial Class MembersForm
         txtPhone.Font = New Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         txtPhone.Location = New Point(136, 116)
         txtPhone.Name = "txtPhone"
-        txtPhone.Size = New Size(228, 30)
+        txtPhone.Size = New Size(283, 30)
         txtPhone.TabIndex = 4
         ' 
         ' txtEmail
@@ -95,7 +94,7 @@ Partial Class MembersForm
         txtEmail.Font = New Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         txtEmail.Location = New Point(136, 167)
         txtEmail.Name = "txtEmail"
-        txtEmail.Size = New Size(228, 30)
+        txtEmail.Size = New Size(283, 30)
         txtEmail.TabIndex = 5
         ' 
         ' btnAdd
@@ -142,22 +141,13 @@ Partial Class MembersForm
         btnClear.Text = "Clear"
         btnClear.UseVisualStyleBackColor = True
         ' 
-        ' lblSearch
-        ' 
-        lblSearch.AutoSize = True
-        lblSearch.Font = New Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        lblSearch.Location = New Point(58, 474)
-        lblSearch.Name = "lblSearch"
-        lblSearch.Size = New Size(77, 28)
-        lblSearch.TabIndex = 10
-        lblSearch.Text = "Search:"
-        ' 
         ' txtSearch
         ' 
+        txtSearch.BorderStyle = BorderStyle.FixedSingle
         txtSearch.Font = New Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        txtSearch.Location = New Point(151, 475)
+        txtSearch.Location = New Point(38, 475)
         txtSearch.Name = "txtSearch"
-        txtSearch.Size = New Size(228, 31)
+        txtSearch.Size = New Size(341, 31)
         txtSearch.TabIndex = 11
         ' 
         ' btnSearch
@@ -213,7 +203,7 @@ Partial Class MembersForm
         GroupBox1.Controls.Add(txtPhone)
         GroupBox1.Controls.Add(txtEmail)
         GroupBox1.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        GroupBox1.Location = New Point(38, 109)
+        GroupBox1.Location = New Point(12, 109)
         GroupBox1.Name = "GroupBox1"
         GroupBox1.Size = New Size(865, 260)
         GroupBox1.TabIndex = 15
@@ -231,7 +221,6 @@ Partial Class MembersForm
         Controls.Add(dgvMembers)
         Controls.Add(btnSearch)
         Controls.Add(txtSearch)
-        Controls.Add(lblSearch)
         Controls.Add(btnClear)
         Controls.Add(btnDelete)
         Controls.Add(btnUpdate)
@@ -256,7 +245,6 @@ Partial Class MembersForm
     Friend WithEvents btnUpdate As Button
     Friend WithEvents btnDelete As Button
     Friend WithEvents btnClear As Button
-    Friend WithEvents lblSearch As Label
     Friend WithEvents txtSearch As TextBox
     Friend WithEvents btnSearch As Button
     Friend WithEvents dgvMembers As DataGridView

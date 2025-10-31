@@ -14,12 +14,8 @@ Public Class BookForm
     ' LOAD DATA WHEN FORM OPENS
     '--------------------------------------------
     Private Sub BookForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        cboStatus.Items.Clear()
-        cboStatus.Items.AddRange(New String() {"Available", "Borrowed", "Reserved", "Lost"})
-        cboStatus.SelectedIndex = 0
         LoadBooks()
     End Sub
-
 
     '--------------------------------------------
     ' DISPLAY ALL BOOK RECORDS IN DATAGRIDVIEW
@@ -41,23 +37,22 @@ Public Class BookForm
         End Try
     End Sub
 
-
     '--------------------------------------------
     ' ADD NEW BOOK
     '--------------------------------------------
     Private Sub btnAdd_Click(sender As Object, e As EventArgs) Handles btnAdd.Click
-        If txtTitle.Text = "" Or txtAuthor.Text = "" Or txtGenre.Text = "" Or cboStatus.Text = "" Then
+        If txtTitle.Text = "" Or txtAuthor.Text = "" Or txtGenre.Text = "" Then
             MessageBox.Show("Please fill in all book details before adding.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             Exit Sub
         End If
 
         Try
-            Dim query As String = "INSERT INTO Books (Title, Author, Genre, Status) VALUES (@Title, @Author, @Genre, @Status)"
+            ' When adding a book, Status defaults to Available
+            Dim query As String = "INSERT INTO Books (Title, Author, Genre, Status) VALUES (@Title, @Author, @Genre, 'Available')"
             Using cmd As New SqlCommand(query, con)
                 cmd.Parameters.AddWithValue("@Title", txtTitle.Text)
                 cmd.Parameters.AddWithValue("@Author", txtAuthor.Text)
                 cmd.Parameters.AddWithValue("@Genre", txtGenre.Text)
-                cmd.Parameters.AddWithValue("@Status", cboStatus.Text)
 
                 con.Open()
                 cmd.ExecuteNonQuery()
@@ -73,9 +68,8 @@ Public Class BookForm
         End Try
     End Sub
 
-
     '--------------------------------------------
-    ' UPDATE BOOK RECORD
+    ' UPDATE BOOK RECORD (Status cannot be changed manually)
     '--------------------------------------------
     Private Sub btnUpdate_Click(sender As Object, e As EventArgs) Handles btnUpdate.Click
         If txtBook_ID.Text = "" Then
@@ -84,12 +78,12 @@ Public Class BookForm
         End If
 
         Try
-            Dim query As String = "UPDATE Books SET Title=@Title, Author=@Author, Genre=@Genre, Status=@Status WHERE Book_ID=@Book_ID"
+            ' Only Title, Author, Genre are editable
+            Dim query As String = "UPDATE Books SET Title=@Title, Author=@Author, Genre=@Genre WHERE Book_ID=@Book_ID"
             Using cmd As New SqlCommand(query, con)
                 cmd.Parameters.AddWithValue("@Title", txtTitle.Text)
                 cmd.Parameters.AddWithValue("@Author", txtAuthor.Text)
                 cmd.Parameters.AddWithValue("@Genre", txtGenre.Text)
-                cmd.Parameters.AddWithValue("@Status", cboStatus.Text)
                 cmd.Parameters.AddWithValue("@Book_ID", txtBook_ID.Text)
 
                 con.Open()
@@ -105,7 +99,6 @@ Public Class BookForm
             con.Close()
         End Try
     End Sub
-
 
     '--------------------------------------------
     ' DELETE BOOK RECORD
@@ -136,11 +129,10 @@ Public Class BookForm
         End If
     End Sub
 
-
     '--------------------------------------------
     ' SEARCH BOOK BY TITLE OR AUTHOR
     '--------------------------------------------
-    Private Sub btnSearch_Click(sender As Object, e As EventArgs) Handles btnSearch.Click
+    Private Sub btnSearch2_Click(sender As Object, e As EventArgs) Handles btnSearch2.Click
         Try
             Dim query As String = "SELECT * FROM Books WHERE Title LIKE @Search OR Author LIKE @Search"
             Using cmd As New SqlCommand(query, con)
@@ -156,7 +148,6 @@ Public Class BookForm
         End Try
     End Sub
 
-
     '--------------------------------------------
     ' LOAD SELECTED RECORD INTO TEXTBOXES
     '--------------------------------------------
@@ -167,13 +158,12 @@ Public Class BookForm
             txtTitle.Text = row.Cells("Title").Value.ToString()
             txtAuthor.Text = row.Cells("Author").Value.ToString()
             txtGenre.Text = row.Cells("Genre").Value.ToString()
-            cboStatus.Text = row.Cells("Status").Value.ToString()
+            ' Status is read-only, no editing
         End If
     End Sub
 
-
     '--------------------------------------------
-    ' CLEAR INPUT FIELDS h
+    ' CLEAR INPUT FIELDS
     '--------------------------------------------
     Private Sub btnClear_Click(sender As Object, e As EventArgs) Handles btnClear.Click
         ClearFields()
@@ -184,11 +174,8 @@ Public Class BookForm
         txtTitle.Clear()
         txtAuthor.Clear()
         txtGenre.Clear()
-        cboStatus.SelectedIndex = -1
         txtSearch.Clear()
     End Sub
 
-    Private Sub dgvBooks_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvBooks.CellContentClick
 
-    End Sub
 End Class

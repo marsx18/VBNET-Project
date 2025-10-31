@@ -6,27 +6,33 @@ Public Class LoginForm
 
     Private Sub btnLogin_Click(sender As Object, e As EventArgs) Handles btnLogin.Click
         Try
-            Dim cmd As New SqlCommand("SELECT Role FROM Users WHERE Username=@u AND Password=@p", con)
+            Dim cmd As New SqlCommand("SELECT User_ID, Role FROM Users WHERE Username=@u AND Password=@p", con)
             cmd.Parameters.AddWithValue("@u", txtUsername.Text)
             cmd.Parameters.AddWithValue("@p", txtPassword.Text)
 
             con.Open()
-            Dim role = cmd.ExecuteScalar()
-            con.Close()
+            Dim reader As SqlDataReader = cmd.ExecuteReader()
+            If reader.Read() Then
+                Dim userID As Integer = reader("User_ID")
+                Dim role As String = reader("Role").ToString()
+                con.Close()
 
-            If role Is Nothing Then
-                MessageBox.Show("Invalid username or password.", "Login Failed")
-            Else
-                If role.ToString() = "Admin" Then
+                If role = "Admin" Then
                     MessageBox.Show("Welcome, Admin!", "Login Successful")
                     MainForm.Show()
                     Me.Hide()
                 Else
                     MessageBox.Show("Welcome, Member!", "Login Successful")
-                    MemberMainForm.Show()
+                    Dim memberForm As New MemberMainForm()
+                    memberForm.LoggedInUserID = userID
+                    memberForm.Show()
                     Me.Hide()
                 End If
+            Else
+                MessageBox.Show("Invalid username or password.", "Login Failed")
+                con.Close()
             End If
+
         Catch ex As Exception
             MessageBox.Show("Error: " & ex.Message)
             con.Close()
@@ -36,13 +42,5 @@ Public Class LoginForm
     Private Sub btnSignup_Click(sender As Object, e As EventArgs) Handles btnSignup.Click
         SignUpForm.Show()
         Me.Hide()
-    End Sub
-
-    Private Sub LoginForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
-    End Sub
-
-    Private Sub lblUser_Click(sender As Object, e As EventArgs) Handles lblUser.Click
-
     End Sub
 End Class

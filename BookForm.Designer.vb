@@ -29,7 +29,6 @@ Partial Class BookForm
         txtAuthor = New TextBox()
         Label3 = New Label()
         txtGenre = New TextBox()
-        Label4 = New Label()
         btnAdd = New Button()
         btnUpdate = New Button()
         Panel1 = New Panel()
@@ -37,10 +36,8 @@ Partial Class BookForm
         grpBookDetails = New GroupBox()
         txtBook_ID = New TextBox()
         Label5 = New Label()
-        cboStatus = New ComboBox()
         btnDelete = New Button()
         btnClear = New Button()
-        btnSearch = New Button()
         Label6 = New Label()
         txtSearch = New TextBox()
         btnSearch2 = New Button()
@@ -118,21 +115,11 @@ Partial Class BookForm
         txtGenre.Size = New Size(281, 29)
         txtGenre.TabIndex = 6
         ' 
-        ' Label4
-        ' 
-        Label4.AutoSize = True
-        Label4.Font = New Font("Segoe UI", 9.75F)
-        Label4.Location = New Point(41, 275)
-        Label4.Name = "Label4"
-        Label4.Size = New Size(65, 23)
-        Label4.TabIndex = 7
-        Label4.Text = "Status :"
-        ' 
         ' btnAdd
         ' 
         btnAdd.Font = New Font("Segoe UI", 10.2F, FontStyle.Bold)
         btnAdd.ForeColor = Color.Green
-        btnAdd.Location = New Point(14, 451)
+        btnAdd.Location = New Point(97, 420)
         btnAdd.Name = "btnAdd"
         btnAdd.Size = New Size(120, 40)
         btnAdd.TabIndex = 9
@@ -143,7 +130,7 @@ Partial Class BookForm
         ' 
         btnUpdate.Font = New Font("Segoe UI", 10.2F, FontStyle.Bold)
         btnUpdate.ForeColor = Color.Green
-        btnUpdate.Location = New Point(185, 451)
+        btnUpdate.Location = New Point(268, 420)
         btnUpdate.Name = "btnUpdate"
         btnUpdate.Size = New Size(120, 40)
         btnUpdate.TabIndex = 10
@@ -177,20 +164,18 @@ Partial Class BookForm
         ' 
         grpBookDetails.Controls.Add(txtBook_ID)
         grpBookDetails.Controls.Add(Label5)
-        grpBookDetails.Controls.Add(cboStatus)
         grpBookDetails.Controls.Add(Label1)
         grpBookDetails.Controls.Add(txtTitle)
         grpBookDetails.Controls.Add(Label2)
         grpBookDetails.Controls.Add(txtAuthor)
         grpBookDetails.Controls.Add(Label3)
-        grpBookDetails.Controls.Add(Label4)
         grpBookDetails.Controls.Add(txtGenre)
         grpBookDetails.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         grpBookDetails.Location = New Point(14, 97)
         grpBookDetails.Margin = New Padding(3, 13, 3, 4)
         grpBookDetails.Name = "grpBookDetails"
         grpBookDetails.Padding = New Padding(3, 4, 3, 4)
-        grpBookDetails.Size = New Size(805, 331)
+        grpBookDetails.Size = New Size(805, 292)
         grpBookDetails.TabIndex = 12
         grpBookDetails.TabStop = False
         grpBookDetails.Text = "Book Information"
@@ -214,21 +199,11 @@ Partial Class BookForm
         Label5.TabIndex = 12
         Label5.Text = "Book ID :"
         ' 
-        ' cboStatus
-        ' 
-        cboStatus.Font = New Font("Segoe UI", 9.75F)
-        cboStatus.FormattingEnabled = True
-        cboStatus.Items.AddRange(New Object() {"Available", "Booked"})
-        cboStatus.Location = New Point(129, 264)
-        cboStatus.Name = "cboStatus"
-        cboStatus.Size = New Size(117, 29)
-        cboStatus.TabIndex = 11
-        ' 
         ' btnDelete
         ' 
         btnDelete.Font = New Font("Segoe UI", 10.2F, FontStyle.Bold)
         btnDelete.ForeColor = Color.Green
-        btnDelete.Location = New Point(361, 451)
+        btnDelete.Location = New Point(444, 420)
         btnDelete.Margin = New Padding(3, 4, 3, 4)
         btnDelete.Name = "btnDelete"
         btnDelete.Size = New Size(120, 40)
@@ -240,7 +215,7 @@ Partial Class BookForm
         ' 
         btnClear.Font = New Font("Segoe UI", 10.2F, FontStyle.Bold)
         btnClear.ForeColor = Color.Green
-        btnClear.Location = New Point(534, 451)
+        btnClear.Location = New Point(617, 420)
         btnClear.Margin = New Padding(3, 4, 3, 4)
         btnClear.Name = "btnClear"
         btnClear.Size = New Size(120, 40)
@@ -248,23 +223,11 @@ Partial Class BookForm
         btnClear.Text = "Clear"
         btnClear.UseVisualStyleBackColor = True
         ' 
-        ' btnSearch
-        ' 
-        btnSearch.Font = New Font("Segoe UI", 10.2F, FontStyle.Bold)
-        btnSearch.ForeColor = Color.Green
-        btnSearch.Location = New Point(698, 451)
-        btnSearch.Margin = New Padding(3, 4, 3, 4)
-        btnSearch.Name = "btnSearch"
-        btnSearch.Size = New Size(120, 40)
-        btnSearch.TabIndex = 15
-        btnSearch.Text = "Search"
-        btnSearch.UseVisualStyleBackColor = True
-        ' 
         ' Label6
         ' 
         Label6.AutoSize = True
         Label6.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        Label6.Location = New Point(14, 535)
+        Label6.Location = New Point(19, 504)
         Label6.Name = "Label6"
         Label6.Size = New Size(141, 28)
         Label6.TabIndex = 16
@@ -272,20 +235,22 @@ Partial Class BookForm
         ' 
         ' txtSearch
         ' 
-        txtSearch.Location = New Point(19, 581)
+        txtSearch.BorderStyle = BorderStyle.FixedSingle
+        txtSearch.Font = New Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        txtSearch.Location = New Point(19, 556)
         txtSearch.Margin = New Padding(3, 4, 3, 4)
         txtSearch.Name = "txtSearch"
-        txtSearch.Size = New Size(351, 27)
+        txtSearch.Size = New Size(351, 31)
         txtSearch.TabIndex = 17
         ' 
         ' btnSearch2
         ' 
         btnSearch2.Font = New Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         btnSearch2.ForeColor = Color.Green
-        btnSearch2.Location = New Point(395, 581)
+        btnSearch2.Location = New Point(396, 549)
         btnSearch2.Margin = New Padding(3, 4, 3, 4)
         btnSearch2.Name = "btnSearch2"
-        btnSearch2.Size = New Size(86, 31)
+        btnSearch2.Size = New Size(117, 45)
         btnSearch2.TabIndex = 18
         btnSearch2.Text = "Search"
         btnSearch2.UseVisualStyleBackColor = True
@@ -304,7 +269,6 @@ Partial Class BookForm
         Controls.Add(btnSearch2)
         Controls.Add(txtSearch)
         Controls.Add(Label6)
-        Controls.Add(btnSearch)
         Controls.Add(btnClear)
         Controls.Add(btnDelete)
         Controls.Add(dgvBooks)
@@ -329,7 +293,6 @@ Partial Class BookForm
     Friend WithEvents txtAuthor As TextBox
     Friend WithEvents Label3 As Label
     Friend WithEvents txtGenre As TextBox
-    Friend WithEvents Label4 As Label
     Friend WithEvents btnAdd As Button
     Friend WithEvents btnUpdate As Button
 
@@ -340,7 +303,6 @@ Partial Class BookForm
     Friend WithEvents Panel1 As Panel
     Friend WithEvents lblTitle As Label
     Friend WithEvents grpBookDetails As GroupBox
-    Friend WithEvents cboStatus As ComboBox
     Friend WithEvents txtBook_ID As TextBox
     Friend WithEvents Label5 As Label
     Friend WithEvents btnDelete As Button

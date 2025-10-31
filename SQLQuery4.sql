@@ -1,0 +1,4 @@
+﻿DELETE FROM Members;
+DELETE FROM Users;
+DBCC CHECKIDENT ('Users', RESEED, 0);
+DBCC CHECKIDENT ('Members', RESEED, 0);

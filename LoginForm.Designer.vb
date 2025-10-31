@@ -95,12 +95,11 @@ Partial Class LoginForm
         ' 
         ' PictureBox1
         ' 
-        PictureBox1.BorderStyle = BorderStyle.FixedSingle
         PictureBox1.Image = My.Resources.Resources._29163523685110
-        PictureBox1.Location = New Point(459, 105)
+        PictureBox1.Location = New Point(426, 78)
         PictureBox1.Name = "PictureBox1"
-        PictureBox1.Size = New Size(245, 195)
-        PictureBox1.SizeMode = PictureBoxSizeMode.StretchImage
+        PictureBox1.Size = New Size(329, 213)
+        PictureBox1.SizeMode = PictureBoxSizeMode.Zoom
         PictureBox1.TabIndex = 23
         PictureBox1.TabStop = False
         ' 

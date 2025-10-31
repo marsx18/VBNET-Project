@@ -117,13 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="TextBox1.Text" xml:space="preserve">
-    <value>Description: 
-
-Library Management System is a VB.NET application developed to simplify and automate the management of books, members, and borrowing activities in a library environment.
-This system allows administrators to manage books and members efficiently, while members can easily view available books and check their borrowing records.
-The project was created as part of the DDWD2653 – VB.NET Programming course to demonstrate the use of database connectivity, CRUD operations, and user interface design in Visual Basic.
-
-</value>
-  </data>
 </root>
