@@ -65,8 +65,9 @@ Partial Class ViewAvailableBooksForm
         ' 
         ' dgvAvailableBooks
         ' 
+        dgvAvailableBooks.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
         dgvAvailableBooks.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        dgvAvailableBooks.Location = New Point(0, 87)
+        dgvAvailableBooks.Location = New Point(0, 73)
         dgvAvailableBooks.Name = "dgvAvailableBooks"
         dgvAvailableBooks.ReadOnly = True
         dgvAvailableBooks.RowHeadersWidth = 51

@@ -99,6 +99,7 @@ Partial Class MembersForm
         ' 
         ' btnAdd
         ' 
+        btnAdd.BackColor = Color.White
         btnAdd.Font = New Font("Segoe UI", 10.2F, FontStyle.Bold)
         btnAdd.ForeColor = Color.Green
         btnAdd.Location = New Point(123, 389)
@@ -106,10 +107,11 @@ Partial Class MembersForm
         btnAdd.Size = New Size(123, 40)
         btnAdd.TabIndex = 6
         btnAdd.Text = "Add"
-        btnAdd.UseVisualStyleBackColor = True
+        btnAdd.UseVisualStyleBackColor = False
         ' 
         ' btnUpdate
         ' 
+        btnUpdate.BackColor = Color.White
         btnUpdate.Font = New Font("Segoe UI", 10.2F, FontStyle.Bold)
         btnUpdate.ForeColor = Color.Green
         btnUpdate.Location = New Point(279, 389)
@@ -117,10 +119,11 @@ Partial Class MembersForm
         btnUpdate.Size = New Size(123, 40)
         btnUpdate.TabIndex = 7
         btnUpdate.Text = "Update"
-        btnUpdate.UseVisualStyleBackColor = True
+        btnUpdate.UseVisualStyleBackColor = False
         ' 
         ' btnDelete
         ' 
+        btnDelete.BackColor = Color.White
         btnDelete.Font = New Font("Segoe UI", 10.2F, FontStyle.Bold)
         btnDelete.ForeColor = Color.Green
         btnDelete.Location = New Point(453, 389)
@@ -128,10 +131,11 @@ Partial Class MembersForm
         btnDelete.Size = New Size(123, 40)
         btnDelete.TabIndex = 8
         btnDelete.Text = "Delete"
-        btnDelete.UseVisualStyleBackColor = True
+        btnDelete.UseVisualStyleBackColor = False
         ' 
         ' btnClear
         ' 
+        btnClear.BackColor = Color.White
         btnClear.Font = New Font("Segoe UI", 10.2F, FontStyle.Bold)
         btnClear.ForeColor = Color.Green
         btnClear.Location = New Point(624, 389)
@@ -139,7 +143,7 @@ Partial Class MembersForm
         btnClear.Size = New Size(123, 40)
         btnClear.TabIndex = 9
         btnClear.Text = "Clear"
-        btnClear.UseVisualStyleBackColor = True
+        btnClear.UseVisualStyleBackColor = False
         ' 
         ' txtSearch
         ' 
@@ -152,17 +156,19 @@ Partial Class MembersForm
         ' 
         ' btnSearch
         ' 
+        btnSearch.BackColor = Color.White
         btnSearch.Font = New Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         btnSearch.ForeColor = Color.Green
-        btnSearch.Location = New Point(430, 473)
+        btnSearch.Location = New Point(419, 470)
         btnSearch.Name = "btnSearch"
         btnSearch.Size = New Size(111, 40)
         btnSearch.TabIndex = 12
         btnSearch.Text = "Search"
-        btnSearch.UseVisualStyleBackColor = True
+        btnSearch.UseVisualStyleBackColor = False
         ' 
         ' dgvMembers
         ' 
+        dgvMembers.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
         dgvMembers.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
         dgvMembers.Dock = DockStyle.Bottom
         dgvMembers.Location = New Point(0, 542)

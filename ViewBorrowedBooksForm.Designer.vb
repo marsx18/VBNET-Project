@@ -57,6 +57,7 @@ Partial Class ViewBorrowedBooksForm
         ' 
         ' dgvBorrowedBooks
         ' 
+        dgvBorrowedBooks.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
         dgvBorrowedBooks.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
         dgvBorrowedBooks.Location = New Point(0, 74)
         dgvBorrowedBooks.Name = "dgvBorrowedBooks"
@@ -68,7 +69,7 @@ Partial Class ViewBorrowedBooksForm
         ' 
         lblTotalFine.AutoSize = True
         lblTotalFine.Font = New Font("Segoe UI Semibold", 16.2F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        lblTotalFine.Location = New Point(59, 372)
+        lblTotalFine.Location = New Point(35, 379)
         lblTotalFine.Name = "lblTotalFine"
         lblTotalFine.Size = New Size(96, 38)
         lblTotalFine.TabIndex = 18
@@ -94,6 +95,7 @@ Partial Class ViewBorrowedBooksForm
         ' 
         AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
+        BackColor = SystemColors.GradientInactiveCaption
         ClientSize = New Size(800, 454)
         Controls.Add(btnSearch)
         Controls.Add(txtSearch)

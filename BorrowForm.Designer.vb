@@ -118,7 +118,7 @@ Partial Class BorrowForm
         ' 
         ' btnBorrow
         ' 
-        btnBorrow.BackColor = Color.Honeydew
+        btnBorrow.BackColor = Color.White
         btnBorrow.Font = New Font("Segoe UI", 10.2F, FontStyle.Bold)
         btnBorrow.ForeColor = Color.Green
         btnBorrow.Location = New Point(101, 360)
@@ -130,7 +130,7 @@ Partial Class BorrowForm
         ' 
         ' btnReturn
         ' 
-        btnReturn.BackColor = Color.Honeydew
+        btnReturn.BackColor = Color.White
         btnReturn.Font = New Font("Segoe UI", 10.2F, FontStyle.Bold)
         btnReturn.ForeColor = Color.Green
         btnReturn.Location = New Point(256, 360)
@@ -142,6 +142,7 @@ Partial Class BorrowForm
         ' 
         ' dgvBorrowRecords
         ' 
+        dgvBorrowRecords.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
         dgvBorrowRecords.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
         dgvBorrowRecords.Dock = DockStyle.Bottom
         dgvBorrowRecords.Location = New Point(0, 442)
@@ -170,7 +171,7 @@ Partial Class BorrowForm
         ' 
         ' btnGenerateReport
         ' 
-        btnGenerateReport.BackColor = Color.Honeydew
+        btnGenerateReport.BackColor = Color.White
         btnGenerateReport.Font = New Font("Segoe UI", 10.2F, FontStyle.Bold)
         btnGenerateReport.ForeColor = Color.Green
         btnGenerateReport.Location = New Point(537, 360)
@@ -207,6 +208,7 @@ Partial Class BorrowForm
         ' 
         AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
+        BackColor = Color.Honeydew
         ClientSize = New Size(925, 674)
         Controls.Add(Panel1)
         Controls.Add(btnGenerateReport)

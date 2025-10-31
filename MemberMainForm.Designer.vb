@@ -83,7 +83,7 @@ Partial Class MemberMainForm
         ' 
         Label2.AutoSize = True
         Label2.Font = New Font("Times New Roman", 10.2F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        Label2.Location = New Point(268, 196)
+        Label2.Location = New Point(268, 200)
         Label2.Name = "Label2"
         Label2.Size = New Size(248, 19)
         Label2.TabIndex = 6
@@ -103,7 +103,7 @@ Partial Class MemberMainForm
         ' 
         Label1.AutoSize = True
         Label1.Font = New Font("Britannic Bold", 16.2F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        Label1.Location = New Point(267, 245)
+        Label1.Location = New Point(277, 246)
         Label1.Name = "Label1"
         Label1.Size = New Size(249, 31)
         Label1.TabIndex = 4
@@ -116,7 +116,7 @@ Partial Class MemberMainForm
         btnViewBorrowedBooks.FlatAppearance.BorderSize = 3
         btnViewBorrowedBooks.Font = New Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         btnViewBorrowedBooks.ForeColor = Color.White
-        btnViewBorrowedBooks.Location = New Point(428, 326)
+        btnViewBorrowedBooks.Location = New Point(429, 317)
         btnViewBorrowedBooks.Name = "btnViewBorrowedBooks"
         btnViewBorrowedBooks.Size = New Size(176, 66)
         btnViewBorrowedBooks.TabIndex = 8
@@ -130,7 +130,7 @@ Partial Class MemberMainForm
         btnViewAvailableBooks.FlatAppearance.BorderSize = 3
         btnViewAvailableBooks.Font = New Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         btnViewAvailableBooks.ForeColor = Color.White
-        btnViewAvailableBooks.Location = New Point(190, 326)
+        btnViewAvailableBooks.Location = New Point(191, 317)
         btnViewAvailableBooks.Name = "btnViewAvailableBooks"
         btnViewAvailableBooks.Size = New Size(176, 66)
         btnViewAvailableBooks.TabIndex = 7

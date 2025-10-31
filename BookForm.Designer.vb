@@ -117,6 +117,7 @@ Partial Class BookForm
         ' 
         ' btnAdd
         ' 
+        btnAdd.BackColor = Color.White
         btnAdd.Font = New Font("Segoe UI", 10.2F, FontStyle.Bold)
         btnAdd.ForeColor = Color.Green
         btnAdd.Location = New Point(97, 420)
@@ -124,10 +125,11 @@ Partial Class BookForm
         btnAdd.Size = New Size(120, 40)
         btnAdd.TabIndex = 9
         btnAdd.Text = "Add"
-        btnAdd.UseVisualStyleBackColor = True
+        btnAdd.UseVisualStyleBackColor = False
         ' 
         ' btnUpdate
         ' 
+        btnUpdate.BackColor = Color.White
         btnUpdate.Font = New Font("Segoe UI", 10.2F, FontStyle.Bold)
         btnUpdate.ForeColor = Color.Green
         btnUpdate.Location = New Point(268, 420)
@@ -135,7 +137,7 @@ Partial Class BookForm
         btnUpdate.Size = New Size(120, 40)
         btnUpdate.TabIndex = 10
         btnUpdate.Text = "Update"
-        btnUpdate.UseVisualStyleBackColor = True
+        btnUpdate.UseVisualStyleBackColor = False
         ' 
         ' Panel1
         ' 
@@ -201,6 +203,7 @@ Partial Class BookForm
         ' 
         ' btnDelete
         ' 
+        btnDelete.BackColor = Color.White
         btnDelete.Font = New Font("Segoe UI", 10.2F, FontStyle.Bold)
         btnDelete.ForeColor = Color.Green
         btnDelete.Location = New Point(444, 420)
@@ -209,10 +212,11 @@ Partial Class BookForm
         btnDelete.Size = New Size(120, 40)
         btnDelete.TabIndex = 13
         btnDelete.Text = "Delete"
-        btnDelete.UseVisualStyleBackColor = True
+        btnDelete.UseVisualStyleBackColor = False
         ' 
         ' btnClear
         ' 
+        btnClear.BackColor = Color.White
         btnClear.Font = New Font("Segoe UI", 10.2F, FontStyle.Bold)
         btnClear.ForeColor = Color.Green
         btnClear.Location = New Point(617, 420)
@@ -221,7 +225,7 @@ Partial Class BookForm
         btnClear.Size = New Size(120, 40)
         btnClear.TabIndex = 14
         btnClear.Text = "Clear"
-        btnClear.UseVisualStyleBackColor = True
+        btnClear.UseVisualStyleBackColor = False
         ' 
         ' Label6
         ' 
@@ -245,6 +249,7 @@ Partial Class BookForm
         ' 
         ' btnSearch2
         ' 
+        btnSearch2.BackColor = Color.White
         btnSearch2.Font = New Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         btnSearch2.ForeColor = Color.Green
         btnSearch2.Location = New Point(396, 549)
@@ -253,7 +258,7 @@ Partial Class BookForm
         btnSearch2.Size = New Size(117, 45)
         btnSearch2.TabIndex = 18
         btnSearch2.Text = "Search"
-        btnSearch2.UseVisualStyleBackColor = True
+        btnSearch2.UseVisualStyleBackColor = False
         ' 
         ' SqlCommand1
         ' 
