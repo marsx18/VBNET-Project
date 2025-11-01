@@ -4,17 +4,28 @@ Imports Microsoft.Data.SqlClient
 Public Class SignUpForm
     Dim con As New SqlConnection("Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Databases\Library.mdf;Integrated Security=True;Connect Timeout=30")
 
+    Private Sub SignUpForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        ' Hide password input with dots
+        txtPassword.PasswordChar = "•"c
+    End Sub
+
     Private Sub btnRegister_Click(sender As Object, e As EventArgs) Handles btnRegister.Click
         Try
-            ' Check required fields
-            If txtUsername.Text = "" Or txtPassword.Text = "" Or cmbRole.Text = "" Then
-                MessageBox.Show("Please fill in all fields.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            ' Trim input spaces
+            Dim username As String = txtUsername.Text.Trim()
+            Dim password As String = txtPassword.Text.Trim()
+            Dim role As String = cmbRole.Text.Trim()
+
+            ' --- Validation ---
+            If username = "" Or password = "" Or role = "" Then
+                MessageBox.Show("Please fill in all required fields.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning)
                 Exit Sub
             End If
 
-            ' Check if username already exists
-            Dim checkCmd As New SqlCommand("SELECT COUNT(*) FROM Users WHERE Username=@u", con)
-            checkCmd.Parameters.AddWithValue("@u", txtUsername.Text)
+            ' --- Check if username already exists (case-insensitive) ---
+            Dim checkCmd As New SqlCommand("SELECT COUNT(*) FROM Users WHERE Username COLLATE SQL_Latin1_General_CP1_CS_AS = @u", con)
+            checkCmd.Parameters.AddWithValue("@u", username)
+
             con.Open()
             Dim count = Convert.ToInt32(checkCmd.ExecuteScalar())
             con.Close()
@@ -24,24 +35,29 @@ Public Class SignUpForm
                 Exit Sub
             End If
 
-            ' Step 1: Insert into Users table and get new User_ID
-            Dim userQuery As String = "INSERT INTO Users (Username, Password, Role) OUTPUT INSERTED.User_ID VALUES (@u, @p, @r)"
+            ' --- Insert into Users table and return new User_ID ---
+            Dim userQuery As String = "
+                INSERT INTO Users (Username, Password, Role)
+                OUTPUT INSERTED.User_ID
+                VALUES (@u, @p, @r)"
             Dim userCmd As New SqlCommand(userQuery, con)
-            userCmd.Parameters.AddWithValue("@u", txtUsername.Text)
-            userCmd.Parameters.AddWithValue("@p", txtPassword.Text)
-            userCmd.Parameters.AddWithValue("@r", cmbRole.Text)
+            userCmd.Parameters.AddWithValue("@u", username)
+            userCmd.Parameters.AddWithValue("@p", password)
+            userCmd.Parameters.AddWithValue("@r", role)
 
             con.Open()
             Dim newUserID As Integer = Convert.ToInt32(userCmd.ExecuteScalar())
             con.Close()
 
-            ' Step 2: If role = Member, insert into Members table as well
-            If cmbRole.Text = "Member" Then
-                Dim memberQuery As String = "INSERT INTO Members (Name, Phone, Email, User_ID) VALUES (@Name, @Phone, @Email, @User_ID)"
+            ' --- If role = Member, insert into Members table as well ---
+            If role = "Member" Then
+                Dim memberQuery As String = "
+                    INSERT INTO Members (Name, Phone, Email, User_ID)
+                    VALUES (@Name, @Phone, @Email, @User_ID)"
                 Dim memberCmd As New SqlCommand(memberQuery, con)
-                memberCmd.Parameters.AddWithValue("@Name", txtName.Text)
-                memberCmd.Parameters.AddWithValue("@Phone", txtPhone.Text)
-                memberCmd.Parameters.AddWithValue("@Email", txtEmail.Text)
+                memberCmd.Parameters.AddWithValue("@Name", txtName.Text.Trim())
+                memberCmd.Parameters.AddWithValue("@Phone", txtPhone.Text.Trim())
+                memberCmd.Parameters.AddWithValue("@Email", txtEmail.Text.Trim())
                 memberCmd.Parameters.AddWithValue("@User_ID", newUserID)
                 con.Open()
                 memberCmd.ExecuteNonQuery()
@@ -50,7 +66,7 @@ Public Class SignUpForm
 
             MessageBox.Show("Account created successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
-            ' Clear all inputs
+            ' --- Clear inputs ---
             txtUsername.Clear()
             txtPassword.Clear()
             txtName.Clear()
@@ -58,7 +74,7 @@ Public Class SignUpForm
             txtEmail.Clear()
             cmbRole.SelectedIndex = -1
 
-            ' Go back to login form
+            ' --- Back to login ---
             LoginForm.Show()
             Me.Hide()
 

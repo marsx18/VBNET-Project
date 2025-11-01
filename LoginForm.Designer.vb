@@ -128,6 +128,7 @@ Partial Class LoginForm
         Controls.Add(lblPass)
         Controls.Add(lblUser)
         Name = "LoginForm"
+        StartPosition = FormStartPosition.CenterScreen
         Text = "LoginForm"
         CType(PictureBox1, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)

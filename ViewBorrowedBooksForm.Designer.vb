@@ -40,7 +40,7 @@ Partial Class ViewBorrowedBooksForm
         Panel1.Location = New Point(0, 0)
         Panel1.Margin = New Padding(3, 4, 3, 4)
         Panel1.Name = "Panel1"
-        Panel1.Size = New Size(800, 80)
+        Panel1.Size = New Size(907, 80)
         Panel1.TabIndex = 16
         ' 
         ' lblTitle
@@ -48,7 +48,7 @@ Partial Class ViewBorrowedBooksForm
         lblTitle.Anchor = AnchorStyles.None
         lblTitle.BackColor = Color.Transparent
         lblTitle.Font = New Font("Arial", 20.25F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        lblTitle.Location = New Point(191, 0)
+        lblTitle.Location = New Point(244, 0)
         lblTitle.Name = "lblTitle"
         lblTitle.Size = New Size(391, 80)
         lblTitle.TabIndex = 0
@@ -57,12 +57,17 @@ Partial Class ViewBorrowedBooksForm
         ' 
         ' dgvBorrowedBooks
         ' 
+        dgvBorrowedBooks.AllowUserToAddRows = False
+        dgvBorrowedBooks.AllowUserToDeleteRows = False
         dgvBorrowedBooks.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
         dgvBorrowedBooks.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
         dgvBorrowedBooks.Location = New Point(0, 74)
+        dgvBorrowedBooks.MultiSelect = False
         dgvBorrowedBooks.Name = "dgvBorrowedBooks"
+        dgvBorrowedBooks.ReadOnly = True
         dgvBorrowedBooks.RowHeadersWidth = 51
-        dgvBorrowedBooks.Size = New Size(800, 221)
+        dgvBorrowedBooks.SelectionMode = DataGridViewSelectionMode.FullRowSelect
+        dgvBorrowedBooks.Size = New Size(907, 232)
         dgvBorrowedBooks.TabIndex = 17
         ' 
         ' lblTotalFine
@@ -77,32 +82,38 @@ Partial Class ViewBorrowedBooksForm
         ' 
         ' txtSearch
         ' 
-        txtSearch.Location = New Point(35, 317)
+        txtSearch.BorderStyle = BorderStyle.FixedSingle
+        txtSearch.Font = New Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        txtSearch.Location = New Point(35, 328)
         txtSearch.Name = "txtSearch"
-        txtSearch.Size = New Size(280, 27)
+        txtSearch.Size = New Size(311, 31)
         txtSearch.TabIndex = 19
         ' 
         ' btnSearch
         ' 
-        btnSearch.Location = New Point(352, 312)
+        btnSearch.BackColor = Color.Navy
+        btnSearch.Font = New Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        btnSearch.ForeColor = Color.White
+        btnSearch.Location = New Point(374, 323)
         btnSearch.Name = "btnSearch"
-        btnSearch.Size = New Size(94, 36)
+        btnSearch.Size = New Size(113, 44)
         btnSearch.TabIndex = 20
         btnSearch.Text = "Search"
-        btnSearch.UseVisualStyleBackColor = True
+        btnSearch.UseVisualStyleBackColor = False
         ' 
         ' ViewBorrowedBooksForm
         ' 
         AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = SystemColors.GradientInactiveCaption
-        ClientSize = New Size(800, 454)
+        ClientSize = New Size(907, 445)
         Controls.Add(btnSearch)
         Controls.Add(txtSearch)
         Controls.Add(lblTotalFine)
         Controls.Add(dgvBorrowedBooks)
         Controls.Add(Panel1)
         Name = "ViewBorrowedBooksForm"
+        StartPosition = FormStartPosition.CenterScreen
         Text = "ViewBorrowedBooksForm"
         Panel1.ResumeLayout(False)
         CType(dgvBorrowedBooks, ComponentModel.ISupportInitialize).EndInit()

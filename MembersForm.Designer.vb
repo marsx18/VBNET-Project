@@ -168,12 +168,17 @@ Partial Class MembersForm
         ' 
         ' dgvMembers
         ' 
+        dgvMembers.AllowUserToAddRows = False
+        dgvMembers.AllowUserToDeleteRows = False
         dgvMembers.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
         dgvMembers.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
         dgvMembers.Dock = DockStyle.Bottom
         dgvMembers.Location = New Point(0, 542)
+        dgvMembers.MultiSelect = False
         dgvMembers.Name = "dgvMembers"
+        dgvMembers.ReadOnly = True
         dgvMembers.RowHeadersWidth = 51
+        dgvMembers.SelectionMode = DataGridViewSelectionMode.FullRowSelect
         dgvMembers.Size = New Size(924, 189)
         dgvMembers.TabIndex = 13
         ' 
@@ -232,6 +237,7 @@ Partial Class MembersForm
         Controls.Add(btnUpdate)
         Controls.Add(btnAdd)
         Name = "MembersForm"
+        StartPosition = FormStartPosition.CenterScreen
         Text = "MembersForm"
         CType(dgvMembers, ComponentModel.ISupportInitialize).EndInit()
         Panel1.ResumeLayout(False)

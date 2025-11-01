@@ -193,6 +193,7 @@ Partial Class SignUpForm
         Controls.Add(lblPassword)
         Controls.Add(lblUsername)
         Name = "SignUpForm"
+        StartPosition = FormStartPosition.CenterScreen
         Text = "SignUpForm"
         ResumeLayout(False)
         PerformLayout()

@@ -54,6 +54,7 @@ Partial Class BookForm
         dgvBooks.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
         dgvBooks.Dock = DockStyle.Bottom
         dgvBooks.Location = New Point(0, 636)
+        dgvBooks.MultiSelect = False
         dgvBooks.Name = "dgvBooks"
         dgvBooks.ReadOnly = True
         dgvBooks.RowHeadersWidth = 51
@@ -172,7 +173,7 @@ Partial Class BookForm
         grpBookDetails.Controls.Add(txtAuthor)
         grpBookDetails.Controls.Add(Label3)
         grpBookDetails.Controls.Add(txtGenre)
-        grpBookDetails.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        grpBookDetails.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         grpBookDetails.Location = New Point(14, 97)
         grpBookDetails.Margin = New Padding(3, 13, 3, 4)
         grpBookDetails.Name = "grpBookDetails"
@@ -230,7 +231,7 @@ Partial Class BookForm
         ' Label6
         ' 
         Label6.AutoSize = True
-        Label6.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label6.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         Label6.Location = New Point(19, 504)
         Label6.Name = "Label6"
         Label6.Size = New Size(141, 28)
@@ -267,7 +268,7 @@ Partial Class BookForm
         ' 
         ' BookForm
         ' 
-        AutoScaleDimensions = New SizeF(8.0F, 20.0F)
+        AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.Honeydew
         ClientSize = New Size(1033, 869)
@@ -282,6 +283,7 @@ Partial Class BookForm
         Controls.Add(btnUpdate)
         Controls.Add(btnAdd)
         Name = "BookForm"
+        StartPosition = FormStartPosition.CenterParent
         Text = "Library Management System"
         CType(dgvBooks, ComponentModel.ISupportInitialize).EndInit()
         Panel1.ResumeLayout(False)

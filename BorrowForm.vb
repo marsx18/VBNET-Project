@@ -4,11 +4,11 @@ Imports Microsoft.Data.SqlClient
 
 Public Class BorrowForm
 
-    Dim connectionString As String = "Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Databases\Library.mdf;Integrated Security=True;Connect Timeout=30"
+    Private connectionString As String = "Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Databases\Library.mdf;Integrated Security=True;Connect Timeout=30"
 
-    '------------------------------------------------------------
-    ' FORM LOAD
-    '------------------------------------------------------------
+    '----------------------------------------------
+    ' LOAD FORM
+    '----------------------------------------------
     Private Sub BorrowForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         LoadMembers()
         LoadBooks()
@@ -19,9 +19,15 @@ Public Class BorrowForm
         dtpReturn.Enabled = False
     End Sub
 
-    '------------------------------------------------------------
+    ' Auto-refresh when form becomes active
+    Private Sub BorrowForm_Activated(sender As Object, e As EventArgs) Handles MyBase.Activated
+        LoadBorrowRecords()
+        LoadBooks()
+    End Sub
+
+    '----------------------------------------------
     ' LOAD MEMBERS
-    '------------------------------------------------------------
+    '----------------------------------------------
     Private Sub LoadMembers()
         Try
             Using con As New SqlConnection(connectionString)
@@ -38,9 +44,9 @@ Public Class BorrowForm
         End Try
     End Sub
 
-    '------------------------------------------------------------
+    '----------------------------------------------
     ' LOAD AVAILABLE BOOKS
-    '------------------------------------------------------------
+    '----------------------------------------------
     Private Sub LoadBooks()
         Try
             Using con As New SqlConnection(connectionString)
@@ -57,18 +63,17 @@ Public Class BorrowForm
         End Try
     End Sub
 
-    '------------------------------------------------------------
-    ' LOAD BORROW RECORDS
-    '------------------------------------------------------------
+    '----------------------------------------------
+    ' LOAD ALL BORROW RECORDS
+    '----------------------------------------------
     Private Sub LoadBorrowRecords()
         Try
             Using con As New SqlConnection(connectionString)
                 con.Open()
-                Dim query As String =
-                    "SELECT 
+
+                Dim query As String = "
+                    SELECT 
                         br.Record_ID,
-                        br.Book_ID,
-                        br.Member_ID,
                         m.Name AS Member_Name,
                         b.Title AS Book_Title,
                         br.Borrow_Date,
@@ -84,48 +89,46 @@ Public Class BorrowForm
                 dt.Load(New SqlCommand(query, con).ExecuteReader())
                 dgvBorrowRecords.DataSource = dt
 
-                dgvBorrowRecords.Columns("Member_Name").HeaderText = "Member Name"
-                dgvBorrowRecords.Columns("Book_Title").HeaderText = "Book Title"
-
-                dgvBorrowRecords.Columns("Book_ID").Visible = False
-                dgvBorrowRecords.Columns("Member_ID").Visible = False
+                dgvBorrowRecords.Columns("Member_Name").HeaderText = "Member"
+                dgvBorrowRecords.Columns("Book_Title").HeaderText = "Book"
             End Using
         Catch ex As Exception
             MessageBox.Show("Error loading borrow records: " & ex.Message)
         End Try
     End Sub
 
-    '------------------------------------------------------------
+    '----------------------------------------------
     ' BORROW A BOOK
-    '------------------------------------------------------------
+    '----------------------------------------------
     Private Sub btnBorrow_Click(sender As Object, e As EventArgs) Handles btnBorrow.Click
         Try
-            If cmbBook.SelectedIndex = -1 Or cmbMember.SelectedIndex = -1 Then
+            If cmbMember.SelectedIndex = -1 Or cmbBook.SelectedIndex = -1 Then
                 MessageBox.Show("Please select both a member and a book.")
                 Return
             End If
 
-            Dim bookID As Integer = CInt(cmbBook.SelectedValue)
             Dim memberID As Integer = CInt(cmbMember.SelectedValue)
+            Dim bookID As Integer = CInt(cmbBook.SelectedValue)
             Dim borrowDate As Date = dtpBorrow.Value
             Dim dueDate As Date = dtpDue.Value
 
             Using con As New SqlConnection(connectionString)
                 con.Open()
 
-                ' Prevent double borrowing same book
-                Dim checkQuery As String = "SELECT COUNT(*) FROM BorrowRecords WHERE Book_ID=@BookID AND Return_Date IS NULL"
+                ' Prevent borrowing a book already borrowed
+                Dim checkQuery As String = "SELECT COUNT(*) FROM BorrowRecords WHERE Book_ID=@Book AND Return_Date IS NULL"
                 Using checkCmd As New SqlCommand(checkQuery, con)
-                    checkCmd.Parameters.AddWithValue("@BookID", bookID)
-                    Dim alreadyBorrowed As Integer = CInt(checkCmd.ExecuteScalar())
-                    If alreadyBorrowed > 0 Then
-                        MessageBox.Show("This book is currently borrowed by someone else.")
+                    checkCmd.Parameters.AddWithValue("@Book", bookID)
+                    If CInt(checkCmd.ExecuteScalar()) > 0 Then
+                        MessageBox.Show("This book is already borrowed.")
                         Return
                     End If
                 End Using
 
                 ' Insert record
-                Dim insertQuery As String = "INSERT INTO BorrowRecords (Book_ID, Member_ID, Borrow_Date, Due_Date) VALUES (@Book, @Member, @Borrow, @Due)"
+                Dim insertQuery As String = "
+                    INSERT INTO BorrowRecords (Book_ID, Member_ID, Borrow_Date, Due_Date)
+                    VALUES (@Book, @Member, @Borrow, @Due)"
                 Using cmd As New SqlCommand(insertQuery, con)
                     cmd.Parameters.AddWithValue("@Book", bookID)
                     cmd.Parameters.AddWithValue("@Member", memberID)
@@ -134,14 +137,14 @@ Public Class BorrowForm
                     cmd.ExecuteNonQuery()
                 End Using
 
-                ' Update status
-                Using updateCmd As New SqlCommand("UPDATE Books SET Status='Borrowed' WHERE Book_ID=@BookID", con)
-                    updateCmd.Parameters.AddWithValue("@BookID", bookID)
+                ' Update book status
+                Using updateCmd As New SqlCommand("UPDATE Books SET Status='Borrowed' WHERE Book_ID=@Book", con)
+                    updateCmd.Parameters.AddWithValue("@Book", bookID)
                     updateCmd.ExecuteNonQuery()
                 End Using
             End Using
 
-            MessageBox.Show("Book borrowed successfully!")
+            MessageBox.Show("Book borrowed successfully!", "Success")
             LoadBorrowRecords()
             LoadBooks()
 
@@ -150,25 +153,18 @@ Public Class BorrowForm
         End Try
     End Sub
 
-    '------------------------------------------------------------
-    ' SELECT RECORD
-    '------------------------------------------------------------
+    '----------------------------------------------
+    ' SELECT ROW
+    '----------------------------------------------
     Private Sub dgvBorrowRecords_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvBorrowRecords.CellClick
         If e.RowIndex >= 0 Then
-            Dim row = dgvBorrowRecords.Rows(e.RowIndex)
             dtpReturn.Enabled = True
-
-            If Not IsDBNull(row.Cells("Return_Date").Value) Then
-                dtpReturn.Value = row.Cells("Return_Date").Value
-            Else
-                dtpReturn.Value = Date.Now
-            End If
         End If
     End Sub
 
-    '------------------------------------------------------------
-    ' RETURN BOOK + FINE CALCULATION
-    '------------------------------------------------------------
+    '----------------------------------------------
+    ' RETURN BOOK
+    '----------------------------------------------
     Private Sub btnReturn_Click(sender As Object, e As EventArgs) Handles btnReturn.Click
         Try
             If dgvBorrowRecords.CurrentRow Is Nothing Then
@@ -176,42 +172,54 @@ Public Class BorrowForm
                 Return
             End If
 
-            Dim row = dgvBorrowRecords.CurrentRow
-            Dim recordID As Integer = row.Cells("Record_ID").Value
-            Dim bookID As Integer = row.Cells("Book_ID").Value
-            Dim dueDate As Date = row.Cells("Due_Date").Value
-            Dim memberName As String = row.Cells("Member_Name").Value.ToString()
-            Dim bookTitle As String = row.Cells("Book_Title").Value.ToString()
-
-            If Not IsDBNull(row.Cells("Return_Date").Value) Then
-                MessageBox.Show("This book is already returned.")
-                Return
-            End If
-
+            Dim recordID As Integer = dgvBorrowRecords.CurrentRow.Cells("Record_ID").Value
             Dim returnDate As Date = dtpReturn.Value
-            Dim fine As Decimal = 0D
-            Dim daysLate As Integer = (returnDate - dueDate).Days
-            If daysLate > 0 Then fine = daysLate * 1D ' RM1 per late day
+            Dim fine As Decimal = 0
 
             Using con As New SqlConnection(connectionString)
                 con.Open()
 
-                ' Update record
-                Using cmd As New SqlCommand("UPDATE BorrowRecords SET Return_Date=@Return, Fine=@Fine WHERE Record_ID=@ID", con)
-                    cmd.Parameters.AddWithValue("@Return", returnDate)
-                    cmd.Parameters.AddWithValue("@Fine", fine)
-                    cmd.Parameters.AddWithValue("@ID", recordID)
-                    cmd.ExecuteNonQuery()
-                End Using
+                ' Get book and due date
+                Dim infoCmd As New SqlCommand("
+                    SELECT br.Book_ID, br.Due_Date, m.Name, b.Title
+                    FROM BorrowRecords br
+                    INNER JOIN Members m ON br.Member_ID=m.Member_ID
+                    INNER JOIN Books b ON br.Book_ID=b.Book_ID
+                    WHERE br.Record_ID=@ID", con)
+                infoCmd.Parameters.AddWithValue("@ID", recordID)
 
-                ' Change book back to Available
-                Using cmd As New SqlCommand("UPDATE Books SET Status='Available' WHERE Book_ID=@BookID", con)
-                    cmd.Parameters.AddWithValue("@BookID", bookID)
-                    cmd.ExecuteNonQuery()
-                End Using
+                Dim reader = infoCmd.ExecuteReader()
+                If Not reader.Read() Then
+                    MessageBox.Show("Record not found.")
+                    Return
+                End If
+                Dim bookID As Integer = reader("Book_ID")
+                Dim dueDate As Date = reader("Due_Date")
+                Dim memberName As String = reader("Name").ToString()
+                Dim bookTitle As String = reader("Title").ToString()
+                reader.Close()
+
+                ' Calculate fine
+                Dim daysLate As Integer = (returnDate - dueDate).Days
+                If daysLate > 0 Then fine = daysLate * 5D
+
+                ' Update return info
+                Dim updateCmd As New SqlCommand("
+                    UPDATE BorrowRecords
+                    SET Return_Date=@Return, Fine=@Fine
+                    WHERE Record_ID=@ID", con)
+                updateCmd.Parameters.AddWithValue("@Return", returnDate)
+                updateCmd.Parameters.AddWithValue("@Fine", fine)
+                updateCmd.Parameters.AddWithValue("@ID", recordID)
+                updateCmd.ExecuteNonQuery()
+
+                ' Update book status
+                Dim bookCmd As New SqlCommand("UPDATE Books SET Status='Available' WHERE Book_ID=@Book", con)
+                bookCmd.Parameters.AddWithValue("@Book", bookID)
+                bookCmd.ExecuteNonQuery()
             End Using
 
-            MessageBox.Show($"{memberName} returned '{bookTitle}' successfully! Fine: RM{fine:F2}")
+
             LoadBorrowRecords()
             LoadBooks()
 
@@ -220,9 +228,9 @@ Public Class BorrowForm
         End Try
     End Sub
 
-    '------------------------------------------------------------
-    ' GENERATE CSV REPORT
-    '------------------------------------------------------------
+    '----------------------------------------------
+    ' GENERATE REPORT
+    '----------------------------------------------
     Private Sub btnGenerateReport_Click(sender As Object, e As EventArgs) Handles btnGenerateReport.Click
         Try
             Dim saveFile As New SaveFileDialog() With {
@@ -232,14 +240,14 @@ Public Class BorrowForm
 
             If saveFile.ShowDialog() = DialogResult.OK Then
                 Using writer As New StreamWriter(saveFile.FileName)
-                    ' Write headers
+                    ' Headers
                     For i As Integer = 0 To dgvBorrowRecords.Columns.Count - 1
                         writer.Write(dgvBorrowRecords.Columns(i).HeaderText)
                         If i < dgvBorrowRecords.Columns.Count - 1 Then writer.Write(",")
                     Next
                     writer.WriteLine()
 
-                    ' Write rows
+                    ' Rows
                     For Each row As DataGridViewRow In dgvBorrowRecords.Rows
                         If Not row.IsNewRow Then
                             For i As Integer = 0 To dgvBorrowRecords.Columns.Count - 1
@@ -251,11 +259,11 @@ Public Class BorrowForm
                     Next
                 End Using
 
-                MessageBox.Show("Borrow report generated successfully!", "Success")
+                MessageBox.Show("Report generated successfully!")
             End If
-
         Catch ex As Exception
             MessageBox.Show("Error generating report: " & ex.Message)
         End Try
     End Sub
+
 End Class

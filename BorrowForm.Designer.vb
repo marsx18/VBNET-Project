@@ -142,12 +142,17 @@ Partial Class BorrowForm
         ' 
         ' dgvBorrowRecords
         ' 
+        dgvBorrowRecords.AllowUserToAddRows = False
+        dgvBorrowRecords.AllowUserToDeleteRows = False
         dgvBorrowRecords.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
         dgvBorrowRecords.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
         dgvBorrowRecords.Dock = DockStyle.Bottom
         dgvBorrowRecords.Location = New Point(0, 442)
+        dgvBorrowRecords.MultiSelect = False
         dgvBorrowRecords.Name = "dgvBorrowRecords"
+        dgvBorrowRecords.ReadOnly = True
         dgvBorrowRecords.RowHeadersWidth = 51
+        dgvBorrowRecords.SelectionMode = DataGridViewSelectionMode.FullRowSelect
         dgvBorrowRecords.Size = New Size(925, 232)
         dgvBorrowRecords.TabIndex = 11
         ' 
@@ -226,6 +231,7 @@ Partial Class BorrowForm
         Controls.Add(lblMember)
         Controls.Add(cmbMember)
         Name = "BorrowForm"
+        StartPosition = FormStartPosition.CenterScreen
         Text = "BorrowForm"
         CType(dgvBorrowRecords, ComponentModel.ISupportInitialize).EndInit()
         Panel1.ResumeLayout(False)

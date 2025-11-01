@@ -174,6 +174,7 @@ Partial Class MainForm
         Controls.Add(MenuStrip1)
         MainMenuStrip = MenuStrip1
         Name = "MainForm"
+        StartPosition = FormStartPosition.CenterScreen
         Text = "MainForm"
         MenuStrip1.ResumeLayout(False)
         MenuStrip1.PerformLayout()

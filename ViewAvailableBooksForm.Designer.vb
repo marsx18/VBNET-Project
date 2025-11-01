@@ -22,8 +22,8 @@ Partial Class ViewAvailableBooksForm
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        btnBorrowSelected = New Button()
-        btnSearchBook = New Button()
+        btnBorrow = New Button()
+        btnSearch = New Button()
         txtSearch = New TextBox()
         dgvAvailableBooks = New DataGridView()
         Panel1 = New Panel()
@@ -36,43 +36,52 @@ Partial Class ViewAvailableBooksForm
         Panel1.SuspendLayout()
         SuspendLayout()
         ' 
-        ' btnBorrowSelected
+        ' btnBorrow
         ' 
-        btnBorrowSelected.BackColor = Color.Green
-        btnBorrowSelected.ForeColor = Color.White
-        btnBorrowSelected.Location = New Point(338, 522)
-        btnBorrowSelected.Name = "btnBorrowSelected"
-        btnBorrowSelected.Size = New Size(141, 50)
-        btnBorrowSelected.TabIndex = 3
-        btnBorrowSelected.Text = "Borrow"
-        btnBorrowSelected.UseVisualStyleBackColor = False
+        btnBorrow.BackColor = Color.Green
+        btnBorrow.Font = New Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        btnBorrow.ForeColor = Color.White
+        btnBorrow.Location = New Point(353, 500)
+        btnBorrow.Name = "btnBorrow"
+        btnBorrow.Size = New Size(194, 72)
+        btnBorrow.TabIndex = 3
+        btnBorrow.Text = "Borrow"
+        btnBorrow.UseVisualStyleBackColor = False
         ' 
-        ' btnSearchBook
+        ' btnSearch
         ' 
-        btnSearchBook.Location = New Point(352, 348)
-        btnSearchBook.Name = "btnSearchBook"
-        btnSearchBook.Size = New Size(94, 32)
-        btnSearchBook.TabIndex = 2
-        btnSearchBook.Text = "Search"
-        btnSearchBook.UseVisualStyleBackColor = True
+        btnSearch.BackColor = Color.Navy
+        btnSearch.Font = New Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        btnSearch.ForeColor = Color.White
+        btnSearch.Location = New Point(353, 347)
+        btnSearch.Name = "btnSearch"
+        btnSearch.Size = New Size(107, 38)
+        btnSearch.TabIndex = 2
+        btnSearch.Text = "Search"
+        btnSearch.UseVisualStyleBackColor = False
         ' 
         ' txtSearch
         ' 
+        txtSearch.BorderStyle = BorderStyle.FixedSingle
+        txtSearch.Font = New Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         txtSearch.Location = New Point(12, 351)
         txtSearch.Name = "txtSearch"
-        txtSearch.Size = New Size(323, 27)
+        txtSearch.Size = New Size(323, 30)
         txtSearch.TabIndex = 1
         ' 
         ' dgvAvailableBooks
         ' 
+        dgvAvailableBooks.AllowUserToAddRows = False
+        dgvAvailableBooks.AllowUserToDeleteRows = False
         dgvAvailableBooks.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
         dgvAvailableBooks.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
         dgvAvailableBooks.Location = New Point(0, 73)
+        dgvAvailableBooks.MultiSelect = False
         dgvAvailableBooks.Name = "dgvAvailableBooks"
         dgvAvailableBooks.ReadOnly = True
         dgvAvailableBooks.RowHeadersWidth = 51
         dgvAvailableBooks.SelectionMode = DataGridViewSelectionMode.FullRowSelect
-        dgvAvailableBooks.Size = New Size(800, 245)
+        dgvAvailableBooks.Size = New Size(917, 245)
         dgvAvailableBooks.TabIndex = 0
         ' 
         ' Panel1
@@ -83,7 +92,7 @@ Partial Class ViewAvailableBooksForm
         Panel1.Location = New Point(0, 0)
         Panel1.Margin = New Padding(3, 4, 3, 4)
         Panel1.Name = "Panel1"
-        Panel1.Size = New Size(800, 80)
+        Panel1.Size = New Size(911, 80)
         Panel1.TabIndex = 15
         ' 
         ' lblTitle
@@ -91,7 +100,7 @@ Partial Class ViewAvailableBooksForm
         lblTitle.Anchor = AnchorStyles.None
         lblTitle.BackColor = Color.Transparent
         lblTitle.Font = New Font("Arial", 20.25F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        lblTitle.Location = New Point(205, 0)
+        lblTitle.Location = New Point(260, 0)
         lblTitle.Name = "lblTitle"
         lblTitle.Size = New Size(391, 80)
         lblTitle.TabIndex = 0
@@ -139,25 +148,26 @@ Partial Class ViewAvailableBooksForm
         AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = SystemColors.GradientInactiveCaption
-        ClientSize = New Size(800, 584)
+        ClientSize = New Size(911, 584)
         Controls.Add(dtpDue)
         Controls.Add(dtpBorrow)
         Controls.Add(Label4)
         Controls.Add(Label3)
-        Controls.Add(btnSearchBook)
-        Controls.Add(btnBorrowSelected)
+        Controls.Add(btnSearch)
+        Controls.Add(btnBorrow)
         Controls.Add(txtSearch)
         Controls.Add(Panel1)
         Controls.Add(dgvAvailableBooks)
         Name = "ViewAvailableBooksForm"
+        StartPosition = FormStartPosition.CenterScreen
         Text = "ViewAvailableBooks"
         CType(dgvAvailableBooks, ComponentModel.ISupportInitialize).EndInit()
         Panel1.ResumeLayout(False)
         ResumeLayout(False)
         PerformLayout()
     End Sub
-    Friend WithEvents btnBorrowSelected As Button
-    Friend WithEvents btnSearchBook As Button
+    Friend WithEvents btnBorrow As Button
+    Friend WithEvents btnSearch As Button
     Friend WithEvents txtSearch As TextBox
     Friend WithEvents dgvAvailableBooks As DataGridView
     Friend WithEvents Panel1 As Panel
